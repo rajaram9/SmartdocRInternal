@@ -1,0 +1,1037 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SMARTINDEXModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BatchAudit">
+          <Key>
+            <PropertyRef Name="BatchAuditid" />
+          </Key>
+          <Property Name="BatchAuditid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Batchname" Type="varchar" MaxLength="1000" />
+          <Property Name="Batchid" Type="int" />
+          <Property Name="QueueStatusid" Type="int" />
+          <Property Name="Statusid" Type="int" />
+          <Property Name="Startdate" Type="datetime" />
+          <Property Name="Enddate" Type="datetime" />
+          <Property Name="Createdby" Type="int" />
+          <Property Name="Createddate" Type="datetime" />
+          <Property Name="Modifiedby" Type="int" />
+          <Property Name="Modifieddate" Type="datetime" />
+          <Property Name="Isactive" Type="bit" />
+        </EntityType>
+        <EntityType Name="BatchAutoExtraction">
+          <Key>
+            <PropertyRef Name="BatchAutoExtractionId" />
+          </Key>
+          <Property Name="BatchAutoExtractionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Batchname" Type="varchar" MaxLength="1000" />
+          <Property Name="BatchId" Type="int" />
+          <Property Name="DocType" Type="varchar" MaxLength="500" />
+          <Property Name="Filename" Type="varchar" MaxLength="1000" />
+          <Property Name="Filepath" Type="varchar" MaxLength="1000" />
+          <Property Name="Isactive" Type="bit" />
+          <Property Name="Createddate" Type="datetime" />
+          <Property Name="Createdby" Type="int" />
+          <Property Name="Modifieddate" Type="datetime" />
+          <Property Name="Modifiedby" Type="int" />
+          <Property Name="ProgressStartDate" Type="datetime" />
+          <Property Name="ProgressEndDateFrom" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Batches">
+          <Key>
+            <PropertyRef Name="Batchid" />
+          </Key>
+          <Property Name="Batchid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Batchname" Type="varchar" MaxLength="500" />
+          <Property Name="Ocrengine" Type="varchar" MaxLength="100" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="Totalnoofpages" Type="int" />
+          <Property Name="Processingpages" Type="int" />
+          <Property Name="Classifieddocs" Type="int" />
+          <Property Name="UnClassifieddocs" Type="int" />
+          <Property Name="Statusid" Type="int" />
+          <Property Name="QueueStatusid" Type="int" />
+          <Property Name="BatchPath" Type="varchar" MaxLength="1000" />
+          <Property Name="Createddate" Type="datetime" />
+          <Property Name="Createdby" Type="int" />
+          <Property Name="Modifieddate" Type="datetime" />
+          <Property Name="Modifiedby" Type="int" />
+          <Property Name="Isactive" Type="bit" />
+          <Property Name="Classifydocs" Type="int" />
+          <Property Name="NoofExtractions" Type="int" />
+        </EntityType>
+        <EntityType Name="BatchExtraction">
+          <Key>
+            <PropertyRef Name="Batchextractionid" />
+          </Key>
+          <Property Name="Batchextractionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Batchid" Type="int" />
+          <Property Name="DocumenttypeId" Type="int" />
+          <Property Name="DocumenttypeName" Type="varchar" MaxLength="300" />
+          <Property Name="Batchpath" Type="varchar" MaxLength="1000" />
+          <Property Name="JsonString" Type="varchar(max)" />
+          <Property Name="Isactive" Type="bit" />
+          <Property Name="Createdby" Type="int" />
+          <Property Name="Createddate" Type="datetime" />
+          <Property Name="Modifiedby" Type="int" />
+          <Property Name="modifieddate" Type="datetime" />
+          <Property Name="ConcatString" Type="int" />
+        </EntityType>
+        <EntityType Name="Classifications">
+          <Key>
+            <PropertyRef Name="Classificationid" />
+          </Key>
+          <Property Name="Classificationid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Batchid" Type="int" />
+          <Property Name="Documenttype" Type="varchar" MaxLength="100" />
+          <Property Name="Classified" Type="char" MaxLength="2" />
+          <Property Name="Pathstatus" Type="varchar" MaxLength="50" />
+          <Property Name="Createdby" Type="int" />
+          <Property Name="Createddate" Type="datetime" />
+          <Property Name="Modifiedby" Type="int" />
+          <Property Name="Modifieddate" Type="datetime" />
+          <Property Name="Isactive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Clientid" />
+          </Key>
+          <Property Name="Clientid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clientname" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="State" Type="varchar" MaxLength="18" />
+          <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="Zip" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Pointofcontact1" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Firstname" Type="varchar" MaxLength="100" />
+          <Property Name="Lastname" Type="varchar" MaxLength="100" />
+          <Property Name="Pointofcontact2" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Phonenumber" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Emailid" Type="varchar" MaxLength="50" />
+          <Property Name="Isactive" Type="bit" />
+          <Property Name="Createdby" Type="varchar" MaxLength="100" />
+          <Property Name="Createddate" Type="datetime" />
+          <Property Name="Modifiedby" Type="varchar" MaxLength="50" />
+          <Property Name="Modifieddate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ClientMappingDocTypes">
+          <Key>
+            <PropertyRef Name="ClientMappingDocTypes" />
+          </Key>
+          <Property Name="ClientMappingDocTypes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clientid" Type="int" />
+          <Property Name="DocumentIDs" Type="varchar(max)" />
+          <Property Name="Isactive" Type="bit" />
+          <Property Name="Createdby" Type="int" />
+          <Property Name="Createddate" Type="datetime" />
+          <Property Name="Modifiedby" Type="int" />
+          <Property Name="Modifieddate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Cst_DocName">
+          <Key>
+            <PropertyRef Name="Cst_DocNameID" />
+          </Key>
+          <Property Name="Cst_DocNameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocName" Type="varchar" MaxLength="2000" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="Createdby" Type="int" />
+          <Property Name="Createddatetime" Type="datetime" />
+          <Property Name="modifiedby" Type="int" />
+          <Property Name="modifieddatetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Cst_DocTypes">
+          <Key>
+            <PropertyRef Name="Cst_DocTypeID" />
+          </Key>
+          <Property Name="Cst_DocTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocTypeName" Type="varchar" MaxLength="5000" />
+          <Property Name="MinPages" Type="int" />
+          <Property Name="MaxPages" Type="int" />
+          <Property Name="Percentageofsimilarity" Type="decimal" Precision="13" Scale="2" />
+          <Property Name="AddIfPrevTypeisSame" Type="char" MaxLength="1" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="HavingPageNumbers" Type="char" MaxLength="1" />
+          <Property Name="PageNumberFormat" Type="varchar" MaxLength="100" />
+          <Property Name="Cst_DocNameID" Type="int" />
+          <Property Name="FileName" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="Cst_Keywords">
+          <Key>
+            <PropertyRef Name="Cst_KeywordID" />
+          </Key>
+          <Property Name="Cst_KeywordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Keyword" Type="varchar" MaxLength="200" />
+          <Property Name="Cst_DocTypeID" Type="int" />
+          <Property Name="Thresholdpercetage" Type="decimal" Precision="13" Scale="2" />
+          <Property Name="ZoneArea" Type="varchar" MaxLength="30" />
+          <Property Name="Casesensitive" Type="bit" />
+          <Property Name="IsActive" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="PagePosition" Type="varchar" MaxLength="10" />
+          <Property Name="HasLastKeywords" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="ExtractionConfig">
+          <Key>
+            <PropertyRef Name="ExtractionConfigID" />
+          </Key>
+          <Property Name="ExtractionConfigID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cst_DocTypeID" Type="int" />
+          <Property Name="ExtractionType" Type="varchar" MaxLength="100" />
+          <Property Name="Pageindex" Type="int" />
+          <Property Name="FieldName" Type="varchar" MaxLength="500" />
+          <Property Name="FieldDataCordinates" Type="varchar" MaxLength="1000" />
+          <Property Name="Anchor" Type="varchar" MaxLength="500" />
+          <Property Name="AnchorDataCordinates" Type="varchar" MaxLength="1000" />
+          <Property Name="Brules" Type="varchar" MaxLength="100" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="createdby" Type="int" />
+          <Property Name="createddate" Type="datetime" />
+          <Property Name="modifiedby" Type="int" />
+          <Property Name="Modifieddate" Type="datetime" />
+          <Property Name="LEFT" Type="int" />
+          <Property Name="TOP" Type="int" />
+          <Property Name="RIGHT" Type="int" />
+          <Property Name="BOTTOM" Type="int" />
+          <Property Name="OCRHeight" Type="int" />
+          <Property Name="OCRWidth" Type="int" />
+          <Property Name="AnchorCoordinates" Type="varchar" MaxLength="500" />
+          <Property Name="ALEFT" Type="int" />
+          <Property Name="ATOP" Type="int" />
+          <Property Name="ARIGHT" Type="int" />
+          <Property Name="ABOTTOM" Type="int" />
+        </EntityType>
+        <EntityType Name="Lob">
+          <Key>
+            <PropertyRef Name="Lobid" />
+          </Key>
+          <Property Name="Lobid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lobname" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="State" Type="char" MaxLength="2" />
+          <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="Zip" Type="int" />
+          <Property Name="Pointofcontact1" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Firstname" Type="varchar" MaxLength="100" />
+          <Property Name="Lastname" Type="varchar" MaxLength="100" />
+          <Property Name="Pointofcontact2" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Phonenumber" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Emailid" Type="varchar" MaxLength="50" />
+          <Property Name="Isactive" Type="bit" />
+          <Property Name="Createdby" Type="varchar" MaxLength="100" />
+          <Property Name="Createddate" Type="datetime" />
+          <Property Name="Modifiedby" Type="varchar" MaxLength="50" />
+          <Property Name="Modifieddate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="processid" />
+          </Key>
+          <Property Name="processid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="processname" Type="nchar" MaxLength="100" />
+          <Property Name="hours" Type="numeric" Precision="9" Scale="0" />
+          <Property Name="minutes" Type="numeric" Precision="9" Scale="0" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="createdby" Type="varchar" MaxLength="100" />
+          <Property Name="createddate" Type="datetime" />
+          <Property Name="modifiedby" Type="varchar" MaxLength="50" />
+          <Property Name="modifieddate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SMARTINDEX.dbo.StatesMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StatesMaster">
+          <Key>
+            <PropertyRef Name="StatesMasterid" />
+          </Key>
+          <Property Name="StatesMasterid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateCode" Type="char" MaxLength="2" />
+          <Property Name="StateName" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Createdby" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Modifiedby" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Statusid" />
+          </Key>
+          <Property Name="Statusid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Isactive" Type="int" />
+          <Property Name="createdby" Type="int" />
+          <Property Name="createddate" Type="datetime" />
+          <Property Name="modifiedby" Type="int" />
+          <Property Name="modifieddate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserRole" Type="varchar" MaxLength="20" />
+          <Property Name="Isactive" Type="bit" />
+          <Property Name="Createdby" Type="int" />
+          <Property Name="Createddate" Type="datetime" />
+          <Property Name="Modifiedby" Type="int" />
+          <Property Name="Modifieddate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SMARTINDEX.dbo.ZipCodeMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ZipCodeMaster">
+          <Key>
+            <PropertyRef Name="ZipCodeId" />
+          </Key>
+          <Property Name="ZipCodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Zip" Type="varchar" MaxLength="10" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
+          <Property Name="Primary_City" Type="varchar" MaxLength="30" />
+          <Property Name="Acceptable" Type="varchar(max)" />
+          <Property Name="Unacceptable_Cities" Type="varchar(max)" />
+          <Property Name="State" Type="varchar" MaxLength="2" />
+          <Property Name="County" Type="varchar(max)" />
+          <Property Name="Timezone" Type="varchar(max)" />
+          <Property Name="Area_Codes" Type="varchar(max)" />
+          <Property Name="Latitude" Type="int" />
+          <Property Name="Longitude" Type="int" />
+          <Property Name="World_Region" Type="varchar(max)" />
+          <Property Name="Country" Type="varchar" MaxLength="2" />
+          <Property Name="Decommissioned" Type="int" />
+          <Property Name="Estimated_Population" Type="int" />
+          <Property Name="Notes" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="SMARTINDEXModelStoreContainer">
+          <EntitySet Name="BatchAudit" EntityType="Self.BatchAudit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BatchAutoExtraction" EntityType="Self.BatchAutoExtraction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Batches" EntityType="Self.Batches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BatchExtraction" EntityType="Self.BatchExtraction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Classifications" EntityType="Self.Classifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientMappingDocTypes" EntityType="Self.ClientMappingDocTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cst_DocName" EntityType="Self.Cst_DocName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cst_DocTypes" EntityType="Self.Cst_DocTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cst_Keywords" EntityType="Self.Cst_Keywords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExtractionConfig" EntityType="Self.ExtractionConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lob" EntityType="Self.Lob" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Process" EntityType="Self.Process" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatesMaster" EntityType="Self.StatesMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StatesMaster].[StatesMasterid] AS [StatesMasterid], 
+    [StatesMaster].[StateCode] AS [StateCode], 
+    [StatesMaster].[StateName] AS [StateName], 
+    [StatesMaster].[IsActive] AS [IsActive], 
+    [StatesMaster].[Createdby] AS [Createdby], 
+    [StatesMaster].[CreatedDate] AS [CreatedDate], 
+    [StatesMaster].[Modifiedby] AS [Modifiedby], 
+    [StatesMaster].[ModifiedDate] AS [ModifiedDate]
+    FROM [dbo].[StatesMaster] AS [StatesMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ZipCodeMaster" EntityType="Self.ZipCodeMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ZipCodeMaster].[ZipCodeId] AS [ZipCodeId], 
+    [ZipCodeMaster].[Zip] AS [Zip], 
+    [ZipCodeMaster].[Type] AS [Type], 
+    [ZipCodeMaster].[Primary_City] AS [Primary_City], 
+    [ZipCodeMaster].[Acceptable] AS [Acceptable], 
+    [ZipCodeMaster].[Unacceptable_Cities] AS [Unacceptable_Cities], 
+    [ZipCodeMaster].[State] AS [State], 
+    [ZipCodeMaster].[County] AS [County], 
+    [ZipCodeMaster].[Timezone] AS [Timezone], 
+    [ZipCodeMaster].[Area_Codes] AS [Area_Codes], 
+    [ZipCodeMaster].[Latitude] AS [Latitude], 
+    [ZipCodeMaster].[Longitude] AS [Longitude], 
+    [ZipCodeMaster].[World_Region] AS [World_Region], 
+    [ZipCodeMaster].[Country] AS [Country], 
+    [ZipCodeMaster].[Decommissioned] AS [Decommissioned], 
+    [ZipCodeMaster].[Estimated_Population] AS [Estimated_Population], 
+    [ZipCodeMaster].[Notes] AS [Notes]
+    FROM [dbo].[ZipCodeMaster] AS [ZipCodeMaster]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SMARTINDEXModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Classification">
+          <Key>
+            <PropertyRef Name="Classificationid" />
+          </Key>
+          <Property Name="Classificationid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Batchid" Type="Int32" />
+          <Property Name="Documenttype" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Classified" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Pathstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Createdby" Type="Int32" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+          <Property Name="Modifiedby" Type="Int32" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="3" />
+          <Property Name="Isactive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Clientid" />
+          </Key>
+          <Property Name="Clientid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clientname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Pointofcontact1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Pointofcontact2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Phonenumber" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Isactive" Type="Boolean" />
+          <Property Name="Createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+          <Property Name="Modifiedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Lob">
+          <Key>
+            <PropertyRef Name="Lobid" />
+          </Key>
+          <Property Name="Lobid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lobname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="Int32" />
+          <Property Name="Pointofcontact1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Pointofcontact2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Phonenumber" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Isactive" Type="Boolean" />
+          <Property Name="Createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+          <Property Name="Modifiedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="processid" />
+          </Key>
+          <Property Name="processid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="processname" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="hours" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="minutes" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="createddate" Type="DateTime" Precision="3" />
+          <Property Name="modifiedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modifieddate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Statusid" />
+          </Key>
+          <Property Name="Statusid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Isactive" Type="Int32" />
+          <Property Name="createdby" Type="Int32" />
+          <Property Name="createddate" Type="DateTime" Precision="3" />
+          <Property Name="modifiedby" Type="Int32" />
+          <Property Name="modifieddate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="StatesMaster">
+          <Key>
+            <PropertyRef Name="StatesMasterid" />
+          </Key>
+          <Property Name="StatesMasterid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateCode" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Createdby" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Modifiedby" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ZipCodeMaster">
+          <Key>
+            <PropertyRef Name="ZipCodeId" />
+          </Key>
+          <Property Name="ZipCodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Primary_City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Acceptable" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Unacceptable_Cities" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="County" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Timezone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Area_Codes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="Int32" />
+          <Property Name="Longitude" Type="Int32" />
+          <Property Name="World_Region" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Decommissioned" Type="Int32" />
+          <Property Name="Estimated_Population" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="SMARTINDEXEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Classifications" EntityType="Self.Classification" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Lobs" EntityType="Self.Lob" />
+          <EntitySet Name="Processes" EntityType="Self.Process" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="StatesMasters" EntityType="Self.StatesMaster" />
+          <EntitySet Name="ZipCodeMasters" EntityType="Self.ZipCodeMaster" />
+          <EntitySet Name="BatchExtractions" EntityType="SMARTINDEXModel.BatchExtraction" />
+          <EntitySet Name="UserRoles" EntityType="SMARTINDEXModel.UserRole" />
+          <EntitySet Name="Cst_Keywords" EntityType="SMARTINDEXModel.Cst_Keywords" />
+          <EntitySet Name="Cst_DocTypes" EntityType="SMARTINDEXModel.Cst_DocTypes" />
+          <EntitySet Name="ClientMappingDocTypes" EntityType="SMARTINDEXModel.ClientMappingDocType" />
+          <EntitySet Name="BatchAudits" EntityType="SMARTINDEXModel.BatchAudit" />
+          <EntitySet Name="Batches" EntityType="SMARTINDEXModel.Batch" />
+          <EntitySet Name="BatchAutoExtractions" EntityType="SMARTINDEXModel.BatchAutoExtraction" />
+          <EntitySet Name="Cst_DocName" EntityType="SMARTINDEXModel.Cst_DocName" />
+          <EntitySet Name="ExtractionConfigs" EntityType="SMARTINDEXModel.ExtractionConfig" />
+        </EntityContainer>
+        <EntityType Name="BatchExtraction">
+          <Key>
+            <PropertyRef Name="Batchextractionid" />
+          </Key>
+          <Property Name="Batchextractionid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Batchid" Type="Int32" />
+          <Property Name="DocumenttypeId" Type="Int32" />
+          <Property Name="DocumenttypeName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Batchpath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="JsonString" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Isactive" Type="Boolean" />
+          <Property Name="Createdby" Type="Int32" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+          <Property Name="Modifiedby" Type="Int32" />
+          <Property Name="modifieddate" Type="DateTime" Precision="3" />
+          <Property Name="ConcatString" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserRole1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Isactive" Type="Boolean" />
+          <Property Name="Createdby" Type="Int32" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+          <Property Name="Modifiedby" Type="Int32" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Cst_Keywords">
+          <Key>
+            <PropertyRef Name="Cst_KeywordID" />
+          </Key>
+          <Property Name="Cst_KeywordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Keyword" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Cst_DocTypeID" Type="Int32" />
+          <Property Name="Thresholdpercetage" Type="Decimal" Precision="13" Scale="2" />
+          <Property Name="ZoneArea" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Casesensitive" Type="Boolean" />
+          <Property Name="IsActive" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="PagePosition" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HasLastKeywords" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cst_DocTypes">
+          <Key>
+            <PropertyRef Name="Cst_DocTypeID" />
+          </Key>
+          <Property Name="Cst_DocTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocTypeName" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="MinPages" Type="Int32" />
+          <Property Name="MaxPages" Type="Int32" />
+          <Property Name="Percentageofsimilarity" Type="Decimal" Precision="13" Scale="2" />
+          <Property Name="AddIfPrevTypeisSame" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="HavingPageNumbers" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PageNumberFormat" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cst_DocNameID" Type="Int32" />
+          <Property Name="FileName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ClientMappingDocType">
+          <Key>
+            <PropertyRef Name="ClientMappingDocTypes" />
+          </Key>
+          <Property Name="ClientMappingDocTypes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clientid" Type="Int32" />
+          <Property Name="DocumentIDs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Isactive" Type="Boolean" />
+          <Property Name="Createdby" Type="Int32" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+          <Property Name="Modifiedby" Type="Int32" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BatchAudit">
+          <Key>
+            <PropertyRef Name="BatchAuditid" />
+          </Key>
+          <Property Name="BatchAuditid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Batchname" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Batchid" Type="Int32" />
+          <Property Name="QueueStatusid" Type="Int32" />
+          <Property Name="Statusid" Type="Int32" />
+          <Property Name="Startdate" Type="DateTime" Precision="3" />
+          <Property Name="Enddate" Type="DateTime" Precision="3" />
+          <Property Name="Createdby" Type="Int32" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+          <Property Name="Modifiedby" Type="Int32" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="3" />
+          <Property Name="Isactive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="Batchid" />
+          </Key>
+          <Property Name="Batchid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Batchname" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Ocrengine" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="Totalnoofpages" Type="Int32" />
+          <Property Name="Processingpages" Type="Int32" />
+          <Property Name="Classifieddocs" Type="Int32" />
+          <Property Name="UnClassifieddocs" Type="Int32" />
+          <Property Name="Statusid" Type="Int32" />
+          <Property Name="QueueStatusid" Type="Int32" />
+          <Property Name="BatchPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+          <Property Name="Createdby" Type="Int32" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="3" />
+          <Property Name="Modifiedby" Type="Int32" />
+          <Property Name="Isactive" Type="Boolean" />
+          <Property Name="Classifydocs" Type="Int32" />
+          <Property Name="NoofExtractions" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BatchAutoExtraction">
+          <Key>
+            <PropertyRef Name="BatchAutoExtractionId" />
+          </Key>
+          <Property Name="BatchAutoExtractionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Batchname" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="BatchId" Type="Int32" />
+          <Property Name="DocType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Filename" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Filepath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Isactive" Type="Boolean" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+          <Property Name="Createdby" Type="Int32" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="3" />
+          <Property Name="Modifiedby" Type="Int32" />
+          <Property Name="ProgressStartDate" Type="DateTime" Precision="3" />
+          <Property Name="ProgressEndDateFrom" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Cst_DocName">
+          <Key>
+            <PropertyRef Name="Cst_DocNameID" />
+          </Key>
+          <Property Name="Cst_DocNameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="Createdby" Type="Int32" />
+          <Property Name="Createddatetime" Type="DateTime" Precision="3" />
+          <Property Name="modifiedby" Type="Int32" />
+          <Property Name="modifieddatetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ExtractionConfig">
+          <Key>
+            <PropertyRef Name="ExtractionConfigID" />
+          </Key>
+          <Property Name="ExtractionConfigID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cst_DocTypeID" Type="Int32" />
+          <Property Name="ExtractionType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Pageindex" Type="Int32" />
+          <Property Name="FieldName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FieldDataCordinates" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Anchor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AnchorDataCordinates" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Brules" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="createdby" Type="Int32" />
+          <Property Name="createddate" Type="DateTime" Precision="3" />
+          <Property Name="modifiedby" Type="Int32" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="3" />
+          <Property Name="LEFT" Type="Int32" />
+          <Property Name="TOP" Type="Int32" />
+          <Property Name="RIGHT" Type="Int32" />
+          <Property Name="BOTTOM" Type="Int32" />
+          <Property Name="OCRHeight" Type="Int32" />
+          <Property Name="OCRWidth" Type="Int32" />
+          <Property Name="AnchorCoordinates" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ALEFT" Type="Int32" />
+          <Property Name="ATOP" Type="Int32" />
+          <Property Name="ARIGHT" Type="Int32" />
+          <Property Name="ABOTTOM" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SMARTINDEXModelStoreContainer" CdmEntityContainer="SMARTINDEXEntities">
+          <EntitySetMapping Name="Classifications">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.Classification">
+              <MappingFragment StoreEntitySet="Classifications">
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Classificationid" ColumnName="Classificationid" />
+                <ScalarProperty Name="Batchid" ColumnName="Batchid" />
+                <ScalarProperty Name="Documenttype" ColumnName="Documenttype" />
+                <ScalarProperty Name="Classified" ColumnName="Classified" />
+                <ScalarProperty Name="Pathstatus" ColumnName="Pathstatus" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Clientid" ColumnName="Clientid" />
+                <ScalarProperty Name="Clientname" ColumnName="Clientname" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Pointofcontact1" ColumnName="Pointofcontact1" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Pointofcontact2" ColumnName="Pointofcontact2" />
+                <ScalarProperty Name="Phonenumber" ColumnName="Phonenumber" />
+                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lobs">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.Lob">
+              <MappingFragment StoreEntitySet="Lob">
+                <ScalarProperty Name="Lobid" ColumnName="Lobid" />
+                <ScalarProperty Name="Lobname" ColumnName="Lobname" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Pointofcontact1" ColumnName="Pointofcontact1" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Pointofcontact2" ColumnName="Pointofcontact2" />
+                <ScalarProperty Name="Phonenumber" ColumnName="Phonenumber" />
+                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Processes">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.Process">
+              <MappingFragment StoreEntitySet="Process">
+                <ScalarProperty Name="processid" ColumnName="processid" />
+                <ScalarProperty Name="processname" ColumnName="processname" />
+                <ScalarProperty Name="hours" ColumnName="hours" />
+                <ScalarProperty Name="minutes" ColumnName="minutes" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createddate" ColumnName="createddate" />
+                <ScalarProperty Name="modifiedby" ColumnName="modifiedby" />
+                <ScalarProperty Name="modifieddate" ColumnName="modifieddate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Statusid" ColumnName="Statusid" />
+                <ScalarProperty Name="Status1" ColumnName="Status" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createddate" ColumnName="createddate" />
+                <ScalarProperty Name="modifiedby" ColumnName="modifiedby" />
+                <ScalarProperty Name="modifieddate" ColumnName="modifieddate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatesMasters">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.StatesMaster">
+              <MappingFragment StoreEntitySet="StatesMaster">
+                <ScalarProperty Name="StatesMasterid" ColumnName="StatesMasterid" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZipCodeMasters">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.ZipCodeMaster">
+              <MappingFragment StoreEntitySet="ZipCodeMaster">
+                <ScalarProperty Name="ZipCodeId" ColumnName="ZipCodeId" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Primary_City" ColumnName="Primary_City" />
+                <ScalarProperty Name="Acceptable" ColumnName="Acceptable" />
+                <ScalarProperty Name="Unacceptable_Cities" ColumnName="Unacceptable_Cities" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="Timezone" ColumnName="Timezone" />
+                <ScalarProperty Name="Area_Codes" ColumnName="Area_Codes" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="World_Region" ColumnName="World_Region" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Decommissioned" ColumnName="Decommissioned" />
+                <ScalarProperty Name="Estimated_Population" ColumnName="Estimated_Population" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BatchExtractions">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.BatchExtraction">
+              <MappingFragment StoreEntitySet="BatchExtraction">
+                <ScalarProperty Name="ConcatString" ColumnName="ConcatString" />
+                <ScalarProperty Name="modifieddate" ColumnName="modifieddate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="JsonString" ColumnName="JsonString" />
+                <ScalarProperty Name="Batchpath" ColumnName="Batchpath" />
+                <ScalarProperty Name="DocumenttypeName" ColumnName="DocumenttypeName" />
+                <ScalarProperty Name="DocumenttypeId" ColumnName="DocumenttypeId" />
+                <ScalarProperty Name="Batchid" ColumnName="Batchid" />
+                <ScalarProperty Name="Batchextractionid" ColumnName="Batchextractionid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="UserRole1" ColumnName="UserRole" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cst_Keywords">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.Cst_Keywords">
+              <MappingFragment StoreEntitySet="Cst_Keywords">
+                <ScalarProperty Name="HasLastKeywords" ColumnName="HasLastKeywords" />
+                <ScalarProperty Name="PagePosition" ColumnName="PagePosition" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Casesensitive" ColumnName="Casesensitive" />
+                <ScalarProperty Name="ZoneArea" ColumnName="ZoneArea" />
+                <ScalarProperty Name="Thresholdpercetage" ColumnName="Thresholdpercetage" />
+                <ScalarProperty Name="Cst_DocTypeID" ColumnName="Cst_DocTypeID" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="Cst_KeywordID" ColumnName="Cst_KeywordID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cst_DocTypes">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.Cst_DocTypes">
+              <MappingFragment StoreEntitySet="Cst_DocTypes">
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Cst_DocNameID" ColumnName="Cst_DocNameID" />
+                <ScalarProperty Name="PageNumberFormat" ColumnName="PageNumberFormat" />
+                <ScalarProperty Name="HavingPageNumbers" ColumnName="HavingPageNumbers" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="AddIfPrevTypeisSame" ColumnName="AddIfPrevTypeisSame" />
+                <ScalarProperty Name="Percentageofsimilarity" ColumnName="Percentageofsimilarity" />
+                <ScalarProperty Name="MaxPages" ColumnName="MaxPages" />
+                <ScalarProperty Name="MinPages" ColumnName="MinPages" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="Cst_DocTypeID" ColumnName="Cst_DocTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientMappingDocTypes">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.ClientMappingDocType">
+              <MappingFragment StoreEntitySet="ClientMappingDocTypes">
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="DocumentIDs" ColumnName="DocumentIDs" />
+                <ScalarProperty Name="Clientid" ColumnName="Clientid" />
+                <ScalarProperty Name="ClientMappingDocTypes" ColumnName="ClientMappingDocTypes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BatchAudits">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.BatchAudit">
+              <MappingFragment StoreEntitySet="BatchAudit">
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="Enddate" ColumnName="Enddate" />
+                <ScalarProperty Name="Startdate" ColumnName="Startdate" />
+                <ScalarProperty Name="Statusid" ColumnName="Statusid" />
+                <ScalarProperty Name="QueueStatusid" ColumnName="QueueStatusid" />
+                <ScalarProperty Name="Batchid" ColumnName="Batchid" />
+                <ScalarProperty Name="Batchname" ColumnName="Batchname" />
+                <ScalarProperty Name="BatchAuditid" ColumnName="BatchAuditid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Batches">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.Batch">
+              <MappingFragment StoreEntitySet="Batches">
+                <ScalarProperty Name="NoofExtractions" ColumnName="NoofExtractions" />
+                <ScalarProperty Name="Classifydocs" ColumnName="Classifydocs" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="BatchPath" ColumnName="BatchPath" />
+                <ScalarProperty Name="QueueStatusid" ColumnName="QueueStatusid" />
+                <ScalarProperty Name="Statusid" ColumnName="Statusid" />
+                <ScalarProperty Name="UnClassifieddocs" ColumnName="UnClassifieddocs" />
+                <ScalarProperty Name="Classifieddocs" ColumnName="Classifieddocs" />
+                <ScalarProperty Name="Processingpages" ColumnName="Processingpages" />
+                <ScalarProperty Name="Totalnoofpages" ColumnName="Totalnoofpages" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Ocrengine" ColumnName="Ocrengine" />
+                <ScalarProperty Name="Batchname" ColumnName="Batchname" />
+                <ScalarProperty Name="Batchid" ColumnName="Batchid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BatchAutoExtractions">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.BatchAutoExtraction">
+              <MappingFragment StoreEntitySet="BatchAutoExtraction">
+                <ScalarProperty Name="ProgressEndDateFrom" ColumnName="ProgressEndDateFrom" />
+                <ScalarProperty Name="ProgressStartDate" ColumnName="ProgressStartDate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Filepath" ColumnName="Filepath" />
+                <ScalarProperty Name="Filename" ColumnName="Filename" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="Batchname" ColumnName="Batchname" />
+                <ScalarProperty Name="BatchAutoExtractionId" ColumnName="BatchAutoExtractionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cst_DocName">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.Cst_DocName">
+              <MappingFragment StoreEntitySet="Cst_DocName">
+                <ScalarProperty Name="modifieddatetime" ColumnName="modifieddatetime" />
+                <ScalarProperty Name="modifiedby" ColumnName="modifiedby" />
+                <ScalarProperty Name="Createddatetime" ColumnName="Createddatetime" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="DocName" ColumnName="DocName" />
+                <ScalarProperty Name="Cst_DocNameID" ColumnName="Cst_DocNameID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExtractionConfigs">
+            <EntityTypeMapping TypeName="SMARTINDEXModel.ExtractionConfig">
+              <MappingFragment StoreEntitySet="ExtractionConfig">
+                <ScalarProperty Name="ABOTTOM" ColumnName="ABOTTOM" />
+                <ScalarProperty Name="ARIGHT" ColumnName="ARIGHT" />
+                <ScalarProperty Name="ATOP" ColumnName="ATOP" />
+                <ScalarProperty Name="ALEFT" ColumnName="ALEFT" />
+                <ScalarProperty Name="AnchorCoordinates" ColumnName="AnchorCoordinates" />
+                <ScalarProperty Name="OCRWidth" ColumnName="OCRWidth" />
+                <ScalarProperty Name="OCRHeight" ColumnName="OCRHeight" />
+                <ScalarProperty Name="BOTTOM" ColumnName="BOTTOM" />
+                <ScalarProperty Name="RIGHT" ColumnName="RIGHT" />
+                <ScalarProperty Name="TOP" ColumnName="TOP" />
+                <ScalarProperty Name="LEFT" ColumnName="LEFT" />
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="modifiedby" ColumnName="modifiedby" />
+                <ScalarProperty Name="createddate" ColumnName="createddate" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="Brules" ColumnName="Brules" />
+                <ScalarProperty Name="AnchorDataCordinates" ColumnName="AnchorDataCordinates" />
+                <ScalarProperty Name="Anchor" ColumnName="Anchor" />
+                <ScalarProperty Name="FieldDataCordinates" ColumnName="FieldDataCordinates" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="Pageindex" ColumnName="Pageindex" />
+                <ScalarProperty Name="ExtractionType" ColumnName="ExtractionType" />
+                <ScalarProperty Name="Cst_DocTypeID" ColumnName="Cst_DocTypeID" />
+                <ScalarProperty Name="ExtractionConfigID" ColumnName="ExtractionConfigID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

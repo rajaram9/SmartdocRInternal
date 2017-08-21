@@ -1,0 +1,14 @@
+<si-header (toggleLeftNavBar)="toggleLeftNavBar()" [isMenuEnabled]=true></si-header>
+<div class="content-wrap">
+  <div class="left" [ngClass]="{'close':!leftNavOpen}">
+    <si-userleftnav></si-userleftnav>
+  </div>
+  <div class="right">
+    <div class="action-bar">
+      <si-user-action-bar></si-user-action-bar>
+    </div>
+    <div class="grid">
+      <si-grid [gridData]=gridData [gridHeaders]=gridHeaders></si-grid>
+    </div>
+  </div>
+</div>

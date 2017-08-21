@@ -1,0 +1,11 @@
+<div class="image-viewer-wrap">
+  <div class="toolbox">
+    <div (click)=rotateLeft() class="tool"><i class="fa fa-undo" aria-hidden="true"></i></div>
+    <div (click)=rotateRight() class="tool"><i class="fa fa-repeat" aria-hidden="true"></i></div>
+    <div (click)=zoomIn() class="tool"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+    <div (click)=zoomOut() class="tool"><i class="fa fa-search-minus" aria-hidden="true"></i></div>
+    <div (click)=reset() class="tool"><i class="fa fa-refresh" aria-hidden="true"></i></div>
+    <div (click)=clearCrop() class="tool"><i class="fa fa-crop" aria-hidden="true"></i></div>
+  </div>
+  <img id="image" class="src-image" #image src="{{imagePath}}">
+</div>

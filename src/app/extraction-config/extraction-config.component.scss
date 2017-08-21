@@ -1,0 +1,47 @@
+
+.margindiv{
+    margin: 10px 10px 10px 10px;
+}
+.sameline {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    margin: 10px 10px 10px 10px;
+}
+.selected-item {
+    background-color: #5bc0de;
+    border: 1px solid rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+}
+
+.button-color {
+    background-color: #5bc0de;
+    color: black;
+}
+
+.doc-carousel {
+    height: 25%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border: 2px solid #ddd;
+    background-color: white;
+    position: absolute;
+    // margin: 10px 10px 10px 10px;
+    &.collapsed {
+        height: 5%;
+    }
+    .carousal-tools {
+        position: absolute;
+        right: 5px;
+        list-style: none;
+        .carousal-tool {
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+}
+
+.ui-listbox {
+    width: 20em;
+}

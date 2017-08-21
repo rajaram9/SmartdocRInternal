@@ -1,0 +1,99 @@
+.document-side-bar {
+    min-width: 300px;
+    max-width: 400px;
+    background-color: white;
+    height: 90vh;
+    overflow: auto;
+    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.document-type-area {
+    padding: 10px 15px;
+    height: inherit;
+}
+
+.doc-type-header {
+    padding: 10px 0;
+    display: flex;
+    cursor: move;
+    font-weight: bold;
+}
+
+.title {
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.doc-type-header .expander {
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.doc-type-header .doc-type-header-title {
+    border-bottom: 2px solid red;
+    color: #73879c;
+    cursor: pointer;
+    /*width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;*/
+}
+
+.doc-type-header .doc-type-header-title.isClassified {
+    border-bottom: 2px solid green;
+}
+
+.doc-type-header .action-btns {
+    color: #73879c;
+    margin-left: auto;
+}
+
+.doc-type-pages {
+    display: none;
+}
+
+.doc-type-page {
+    padding-left: 30px;
+    margin-bottom: 5px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.doc-type-page.is-view-mode {
+    font-weight: bold;
+}
+
+.doc-type-page-drag-icon {
+    color: #ddd;
+    cursor: pointer;
+}
+
+.doc-type-page.page-drag-enter {
+    border-top: 2px solid black;
+}
+
+.doc-type.isExpanded .doc-type-pages {
+    display: block;
+}
+
+.document-side-bar-header {
+    border-bottom: 2px solid #E6E9ED;
+    padding: 1px 5px 6px;
+    margin: 10px 10px 0 10px;
+    color: #73879c;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.document-side-bar-header .action-btn {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.doc-type-page-side-icon {
+    cursor: pointer!important;
+}

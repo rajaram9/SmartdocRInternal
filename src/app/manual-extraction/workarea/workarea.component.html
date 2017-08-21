@@ -1,0 +1,48 @@
+<div class="work-area" [ngClass]="{'reduced':collapsed}">
+  <div class="work-area-item">
+    <si-icon-nav (navItemChanged)="onNavItemChanged($event)"></si-icon-nav>
+  </div>
+  <div class="work-area-item workspace">
+    <div class="extraction-space">
+      <div class="doc-slides">
+        <div class="doc-viewer">
+          <si-doc-viewer [viewerWidth]="'750px'" [markField]=fieldData [doc]=currentActiveDoc [widthInRF]=currentBatchData.ImageWidth
+            [heightInRF]=currentBatchData.ImageHeight [Frompage]='"Extraction"'>
+          </si-doc-viewer>
+        </div>
+      </div>
+      <div class="doc-items ">
+        <div class="doc-fields ">
+          <div class="header ">
+            <h3> Extracted Values</h3>
+            <div class="preview" style="width: 300px;height: 300px;" >
+</div>
+</div>
+<div class="fileds-list ">
+  <table class="extracted-field-list ">
+    <tbody>
+      <tr (click)="fieldSelect(data) " class="extracted-field-row " *ngFor="let data of currentBatchData.fields ">
+        <td class="extracted-field-header" [style.padding-left]="data.Subsidiary=='0'?'1':'70'+'px'">{{data.field}}</td>
+        <td class="extracted-field-cell " [siConfidence]="data.value==''?0:data.confidence">
+          <div class="boxed" contenteditable="true" style="white-space: pre-wrap;" (input)="data.value = $event.target.innerText" >{{data.value}}</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="work-area-item ">
+  <si-document-side-bar [docTypes]="docTypes " (pdf)="onPdfRequest() " (save)="onSave() " (selectedDocType)=onsearch($event)></si-document-side-bar>
+</div>
+</div>
+<div class="doc-carousel " [ngClass]="{ 'collapsed':collapsed} ">
+  <ul class="carousal-tools ">
+    <li (click)="collapsed=!collapsed " class="carousal-tool ">
+      <i class="fa fa-chevron-down " [ngClass]="{ 'fa-rotate-180':collapsed} " aria-hidden="true "></i>
+    </li>
+  </ul>
+  <si-extraction-doc-carousel (itemSelected)=onDocSelected($event) [docType]="currentDocType "> </si-extraction-doc-carousel>
+</div>

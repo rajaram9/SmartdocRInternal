@@ -1,0 +1,11 @@
+<div class="help-bar">
+    <div class="help-items">
+        <div class="help-item" *ngFor="let data of helpData">
+            <div class="item-title">
+                {{data.title}}
+            </div>
+            <div class="item-details" [innerHTML]=data.content>
+            </div>
+        </div>
+    </div>
+</div>

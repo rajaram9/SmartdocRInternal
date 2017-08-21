@@ -1,0 +1,15 @@
+
+<si-header (toggleLeftNavBar)="toggleLeftNavBar()" [isMenuEnabled]=true></si-header>
+<div class="content-wrap">
+  <div class="left" [ngClass]="{'close':!leftNavOpen}">
+    <si-leftnav (onApplyFilter)=onApplyFilter($event) [filterCategorys]=leftNavFilters></si-leftnav>
+  </div>
+  <div class="right">
+    <div class="action-bar">
+      <si-action-bar (onToggleFilter)='leftNavOpen=!leftNavOpen' (newBatch)="onNewBatchAdded($event)"></si-action-bar>
+    </div>
+    <div class="grid">
+      <si-grid [gridData]=gridData [gridHeaders]=gridHeaders (classification)="openClassification($event)" (extraction)="openExtraction($event)"></si-grid>
+    </div>
+  </div>
+</div>

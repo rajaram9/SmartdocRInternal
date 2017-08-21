@@ -1,0 +1,66 @@
+/*#custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+     margin-top: 30px;
+   margin-bottom: 10px;
+   width: 400px;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}*/
+
+.search {
+    /*margin-top: 60px;*/
+    background-color: white;
+    display: table;
+    margin: 15px 5px 0px 0px;
+    /*width: 80%;*/
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    width: 96%;
+    /*float: left;*/
+}
+
+.search-key {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-right: none;
+    background-color: rgba(236, 237, 239, 0.62);
+}
+
+.input-group-addon {
+    background-color: rgba(236, 237, 239, 0.62);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    cursor: pointer;
+}
+
+.addon-sty {
+    /*width: 80%;
+        display: table;*/
+    margin: 10px 10px 10px 10px;
+}

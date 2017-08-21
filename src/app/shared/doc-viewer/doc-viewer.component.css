@@ -1,0 +1,7 @@
+.viewer-wrap {
+    width: 900px;
+    height: 90vh;
+    background-color: #ccc;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}

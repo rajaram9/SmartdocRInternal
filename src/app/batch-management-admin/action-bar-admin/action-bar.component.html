@@ -1,0 +1,26 @@
+<div class="action-wrap">
+
+  <div class="left">
+    <div class="action-btns">
+      <i class="action-btn fa fa-bars fa-2x" (click)=toggleFilter() si-tooltip data-toggle="tooltip" data-placement="bottom" title="Filter"></i>
+      <i class="action-btn fa fa-cloud-upload fa-2x" (click)="triggerUpload()" si-tooltip data-toggle="tooltip" data-placement="bottom"
+        title="Upload"></i>
+      <i class="action-btn fa fa-refresh fa-2x" si-tooltip data-toggle="tooltip" data-placement="bottom" title="Refresh"></i>
+    </div>
+    <div class="search">
+      <div class="input-group">
+        <input type="text" class="form-control batch-search-input" placeholder="Batch ID">
+        <span class="input-group-addon batch-search-btn">
+                <i class="fa fa-search" ></i>
+            </span>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="calendar">
+      <si-calendar></si-calendar>
+    </div>
+  </div>
+</div>
+
+<input siFileUploadTrigger class="upload-batch" (change)="onFileChange($event)" type="file" />

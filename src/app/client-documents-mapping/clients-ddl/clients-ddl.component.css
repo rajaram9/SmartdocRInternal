@@ -1,0 +1,10 @@
+.clientsmain{
+    display:-webkit-box;
+    display:flex;
+    flex-direction:row;
+    align-content:flex-start;
+    margin:5px 5px 5px 5px;
+}
+.client-label{
+     margin:5px 5px 0px 0px;
+}

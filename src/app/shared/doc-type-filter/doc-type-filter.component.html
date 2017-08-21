@@ -1,0 +1,12 @@
+<div class="filter-section">
+    <div class="nav-bar-filter-title" (click)="open=!open">
+        <div>
+            <i class=" nav-bar-filter-title-icon fa" [ngClass]="{'fa-angle-left':!open,'fa-angle-down':open}" aria-hidden="true"></i>
+        </div>
+        <div class="nav-bar-filter-title-text">{{header}}</div>
+    </div>
+    <div class="filter-items" [ngClass]="{'open':open}">
+        <div class="filter-item" *ngFor="let filterItem of filterItems">
+            {{filterItem.text}} <span>({{filterItem.itemCount}})</span></div>
+    </div>
+</div>

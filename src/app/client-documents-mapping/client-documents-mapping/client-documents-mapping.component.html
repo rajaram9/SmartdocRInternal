@@ -1,0 +1,10 @@
+<si-header [isMenuEnabled]=false></si-header>
+<div class="col-md-12">
+  <si-clients-ddl (selectedClient)=onsearch($event)></si-clients-ddl>
+</div>
+<div class="col-md-12">
+  <si-dual-list [Client]="selectedClients" [sort]="keepSorted" [source]="source" [key]="key" [display]="display" [(destination)]="confirmed"
+    height="265px">
+
+  </si-dual-list>
+</div>

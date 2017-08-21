@@ -1,0 +1,36 @@
+<div class="document-side-bar">
+  <div class="document-side-bar-header">
+    <div class="title" si-tooltip data-toggle="tooltip" data-placement="bottom" title="{{batchName}}">{{batchName}}</div>
+    <div class="action-btns">
+      <i class="fa fa-plus action-btn" (click)="addNewDocType()" aria-hidden="true"></i>
+      <i class="fa fa-floppy-o action-btn" (click)="saveDocType()" aria-hidden="true"></i>
+      <i class="fa fa-file-pdf-o action-btn" (click)="generatePdf(docTypes)" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="document-type-area">
+    <div class="doc-type" [ngClass]="{'isExpanded':docType.isExpanded==true}" *ngFor="let docType of docTypes;let pageGroupIndex=index">
+      <div class="doc-type-header" draggable="true" siDragAndDrop (docTypeDrop)="onDocTypeDrop($event)" [dragItemType]="'docType'"
+        [pageGroupIndex]="pageGroupIndex" (click)="docType.isExpanded=!docType.isExpanded">
+        <div class="expander">
+          <i class="fa " [ngClass]="{'fa-angle-down':docType.isExpanded,'fa-angle-right':!docType.isExpanded}"></i>
+        </div>
+        <div class="doc-type-header-title" [ngClass]="{'isClassified':docType.isClassified==true}" (click)="onSelectedclick(docType.nameWithIndex)">
+          {{docType.nameWithIndex}}</div>
+        <div class="action-btns">
+          <i class="fa fa-file-pdf-o action-btn doc-type-page-side-icon" (click)="generatePdf(docType)" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="doc-type-pages">
+        <div (click)="onPageSelect(page)" class="doc-type-page" [ngClass]="{'is-view-mode':page.isViewMode}" siDragAndDrop (docTypeDrop)="onDocTypeDrop($event)"
+          (pageDrop)="onDrop($event)" [dragItemType]="'page'" [pageGroupIndex]="pageGroupIndex" [pageIndex]="pageIndex" draggable="true"
+          *ngFor="let page of docType.pages;let pageIndex=index">
+          <div> {{docType.name+'-'+(pageIndex+1)}}</div>
+          <div class="doc-type-page-drag-icon">
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

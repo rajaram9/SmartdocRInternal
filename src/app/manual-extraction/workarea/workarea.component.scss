@@ -1,0 +1,108 @@
+.work-area {
+    display: flex;
+    max-width: 100%;
+    overflow: hidden;
+    height: 100%;
+    &.reduced {
+        height: 87%;
+    }
+    .work-area-item {
+        height: 100%;
+        //overflow: auto;
+    }
+    .workspace {
+        margin-left: 5px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        max-width: 80%;
+        .extraction-space {
+            display: flex;
+            margin-top: 20px;
+            min-width: 100%;
+            overflow: hidden;
+            .doc-slides {
+                width: 760px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                .doc-viewer {
+                    height: 90%;
+                }
+            }
+            .doc-items {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                .doc-fields {
+                    overflow: auto;
+                    height: 100%;
+                }
+                .header {
+                    padding-left: 15px;
+                }
+                .fileds-list {
+                    overflow: auto;
+                    padding-left: 15px;
+                    .extracted-field-list {
+                        width: 98%;
+                        .extracted-field-cell {
+                            padding: 5px;
+                            border: 1px solid #ccc;
+                            width: 60%;
+                            .boxed {
+                                border: 1px solid green!important;
+                            }
+                            &.yellow {
+                                background-color: yellow;
+                            }
+                            &.red {
+                                background-color: rgba(245, 174, 174, 0.68);
+                            }
+                            &.white {
+                                background-color: white;
+                            }
+                        }
+                        .extracted-field-header {
+                            padding: 5px;
+                            border: 1px solid #ccc;
+                            width: 40%;
+                            font-weight: bold;
+                            .boxed {
+                                border: 1px solid green!important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.doc-carousel {
+    height: 25%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border: 2px solid #ddd;
+    background-color: white;
+    position: absolute;
+    &.collapsed {
+        height: 5%;
+    }
+    .carousal-tools {
+        position: absolute;
+        right: 5px;
+        list-style: none;
+        .carousal-tool {
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+}
+
+.preview {
+    overflow: hidden;
+}

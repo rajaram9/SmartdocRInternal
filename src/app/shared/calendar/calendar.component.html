@@ -1,0 +1,30 @@
+<div class="calendar-wrap">
+    <div class="calendar-selection" (click)="active=!active">
+        <div class="calendar-icon">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+        </div>
+        <div class="calendar-selection-text">
+            {{fromDate | date:"MMMM dd, yyyy"}} - {{toDate | date:"MMMM dd, yyyy"}}
+        </div>
+        <div class="calendar-selection-icon">
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+        </div>
+    </div>
+    <div class="calendar-picker" [ngClass]="{'active':active}">
+        <div class="calendar-picker-selection">
+            <div calendarInit (selectedDate)="onFromDateChange($event)" class="calendar-from"></div>
+            <div calendarInit (selectedDate)="onToDateChange($event)" class="calendar-to"></div>
+        </div>
+        <div class="calendar-action">
+            <span (mouseover)='submitOver=true' (mouseleave)='submitOver=false' (click)="onDateSelected()" class="fa-stack ">
+  <i class="fa  fa-stack-2x" [ngClass]="{'fa-circle':submitOver,'fa-circle-thin':!submitOver}" aria-hidden="true"></i>
+  <i class="fa fa-check fa-stack-1x" [ngClass]="{'over-icon':submitOver}" aria-hidden="true"></i>
+</span>
+            <span (mouseover)='cancelOver=true' (mouseleave)='cancelOver=false' (click)="close()" class="fa-stack">
+  <i class="fa fa-circle-thin fa-stack-2x" [ngClass]="{'fa-circle':cancelOver,'fa-circle-thin':!cancelOver}" aria-hidden="true"></i>
+  <i class="fa fa-times fa-stack-1x" [ngClass]="{'over-icon':cancelOver}" aria-hidden="true"></i>
+</span>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="nav-bar">
+  <div class="header">
+    Filters
+  </div>
+  <div class="filter-section" *ngFor="let category of filterCategorys">
+    <div class="filter-title" (click)="category.isOpen=!category.isOpen">
+      <div>
+        <i class="filter-title-icon fa" [ngClass]="{'fa-angle-left':!category.isOpen,'fa-angle-down':category.isOpen}" aria-hidden="true"></i>
+      </div>
+      <div class="filter-title-text">{{category.title}}</div>
+    </div>
+    <div class="filter-items" [ngClass]="{'open':category.isOpen}">
+      <div *ngIf="!category.subCategorys">
+        <div class="filter-item" (click)=applyFilter(item) *ngFor="let item of category.items">
+          {{item.title}} <span>({{item.count}})</span></div>
+      </div>
+      <div *ngIf="category.subCategorys">
+        <div class="filter-items-group" *ngFor="let subCategory of category.subCategorys">
+          <div class="title">{{subCategory.title}}</div>
+          <div class="filter-items" [ngClass]="{'open':subCategory.isOpen}">
+            <div class="filter-item" (click)=applyFilter(subCategoryItem) *ngFor="let subCategoryItem of subCategory.items">
+              {{subCategoryItem.title}} <span>({{subCategoryItem.count}})</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

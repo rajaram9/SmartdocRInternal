@@ -1,0 +1,52 @@
+$signinbuttoncolor:rgba(255, 255, 255, 0.5);
+.header-image {
+    margin: 0;
+    background-image: url('../../assets/image/home-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    // background-position: center;
+    height: 65vh;
+    width: 100%;
+    .site-brand {
+        font-size: 30px;
+        color: white;
+        top: 30px;
+        // left: 150px;
+        // font-variant: small-caps;
+        text-shadow: 2px 6px 12px #3F51B5;
+    }
+    .login-wrap {
+        padding: 30px;
+        width: 400px;
+        margin-top: 150px;
+        // margin-left: 50px;
+        background-color: rgba(0, 0, 0, .3);
+        box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .25);
+        color: white;
+        .signin-wrap {
+            text-align: center;
+            .btn-signin {
+                width: 100px;
+                margin: auto;
+                margin-top: 30px;
+                padding: 10px;
+                border: 2px solid $signinbuttoncolor;
+                cursor: pointer;
+                font-size: 18px;
+                font-weight: bold;
+                &:hover {
+                    background-color: $signinbuttoncolor;
+                    color: black;
+                }
+            }
+        }
+    }
+}
+
+.link-items {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}

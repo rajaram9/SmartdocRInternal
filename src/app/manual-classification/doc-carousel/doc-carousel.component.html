@@ -1,0 +1,14 @@
+<div class="carousel-wrap">
+  <div class="carousel-items">
+    <div class="carousel-group" *ngFor="let docType of docTypes;let docTypeIndex=index">
+      <div class="carousel-item" [ngClass]="{'selected':page.selected,'is-view-mode':page.isViewMode}" (click)=onItemSelect(page)
+        *ngFor="let page of docType.pages;let pageIndex=index">
+        <div class="status" [ngClass]="{'green':docType.isClassified,'red':!docType.isClassified}"> </div>
+        <img siDocCarouselDrag [pageGroupIndex]="docTypeIndex" [pageIndex]="pageIndex" src="{{imagePath+page.path}}" />
+        <div class="img-caption" contenteditable='true' [(ngModel)]="page.name" docNameUpdate ngDefaultControl>
+          <input (click)="onSelectionChange(docTypeIndex,pageIndex,page,$event)" type="checkbox"> {{docType.name+'-'+(pageIndex+1)}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

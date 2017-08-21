@@ -1,0 +1,39 @@
+<div class="output-warp">
+  <div class="items-actions">
+    <div class="items-selection">
+      <input type="checkbox" />
+    </div>
+    <div class="action-btns">
+      <input class="action-btn" type="button" value="Delete" />
+    </div>
+  </div>
+  <div class="output-item" (click)="openOutputViewer(file)" *ngFor="let file of files">
+    <div class="item-selection">
+      <input type="checkbox" />
+    </div>
+    <div class="item-icon">
+      <div class="icon">
+        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="item-details">
+      <div class="item-name">
+        <a href="{{batchPath+file.batchname+'.pdf'}}" target="_blank">{{file.batchname}}</a>
+      </div>
+      <div class="item-created-by">
+        <strong> Uploaded by:</strong> Test User
+      </div>
+      <div class="item-created">
+        <strong>Created:</strong> {{file.createddate | date:"MM/dd/yy hh:mm"}}
+      </div>
+    </div>
+    <div class="item-actions">
+      <div class="item-status">
+        Status: {{file.statusid}}
+      </div>
+      <div class="item-priority">
+        Priority: Low
+      </div>
+    </div>
+  </div>
+</div>

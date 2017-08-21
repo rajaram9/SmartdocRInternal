@@ -1,0 +1,17 @@
+ $radius:10px;
+ .progress-area {
+     border: 1px solid #ccc;
+     border-radius: $radius;
+     overflow: hidden;
+     width: 100%;
+     .progress-bar {
+         border-radius: $radius;
+         &.success {
+             background: #b4e391;
+             background: -moz-linear-gradient(top, #b4e391 0%, #61c419 50%, #b4e391 100%);
+             background: -webkit-linear-gradient(top, #b4e391 0%, #61c419 50%, #b4e391 100%);
+             background: linear-gradient(to bottom, #b4e391 0%, #61c419 50%, #b4e391 100%);
+             //  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391', GradientType=0);
+         }
+     }
+ }

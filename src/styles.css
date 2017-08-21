@@ -1,0 +1,19 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: #f3f3f3;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+.loader {
+    background: rgba(255, 255, 255, 0.8)!important;
+    color: #000 !important;
+}
+
+.sk-cube-grid .sk-cube {
+    background-color: #000;
+}

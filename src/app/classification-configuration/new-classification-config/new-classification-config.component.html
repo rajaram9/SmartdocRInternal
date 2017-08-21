@@ -1,0 +1,64 @@
+<!--<div class="action-blade" (click)="bladeClick($event)">-->
+<div (click)="bladeClick($event)">
+  <div>
+    <!--<fieldset>
+            <legend>New Document Type</legend>-->
+    <div class="form-group form-wrap" *ngIf="clickonnewdoctype === false">
+      <label class="headingbk">Create document name</label><br>
+      <input type="text" class="form-control textbox_width" [(ngModel)]="newClassification.docName" placeholder="Document Name">
+
+    </div>
+    <!--<div class="form-group" *ngIf="clickonnewdoctype">
+      <label>Document Name</label><br>
+      <p-dropdown [options]="cars" [(ngModel)]="newClassification.DocName" [style]="{'width':'150px'}" editable="editable" placeholder="New Doc Name" filter="filter" ></p-dropdown>
+    </div>-->
+    <div class="form-wrapdoctype" *ngIf="clickonnewdoctype">
+      <div class="sameline">
+        <div class="selected-item"><span>Document name selected : </span>
+          <span>{{newClassification.docName}}</span>
+        </div>
+      </div>
+      <div class="form-group sidebyside">
+        <label class="normalfont">Document Type</label>
+        <input type="text" class="form-control textbox_width1" [(ngModel)]="newClassification.docTypeName" placeholder="Document Type">
+      </div>
+      <!--<div class="form-group">
+        <label>Minimum Pages</label>
+        <input type="text" class="form-control textbox_width" [(ngModel)]="newClassification.minPages" placeholder="Minimum Pages">
+      </div>
+      <div class="form-group">
+        <label>Maximum Page</label>
+        <input type="text" class="form-control textbox_width" [(ngModel)]="newClassification.maxPages" placeholder="Maximum Page">
+      </div>
+      <div class="form-group">
+        <label>Have Page Numbers</label><br/>
+        <input type="radio" [(ngModel)]="newClassification.havingPageNumbers" name="pageNumbersStatus" value="Y"> Yes
+        <input type="radio" [(ngModel)]="newClassification.havingPageNumbers" name="pageNumbersStatus" value="N"> No
+      </div>
+      <div class="form-group">
+        <label>Page Number Format</label>
+        <input type="text" [(ngModel)]="newClassification.pageNumberFormat" class="form-control textbox_width" placeholder="Page Number Format">
+      </div>
+      <div class="form-group">
+        <label>Add If Previous Type Is Same</label><br/>
+        <input type="radio" [(ngModel)]="newClassification.addIfPrevTypeisSame" name="addToPrev" value="Y"> Yes
+        <input type="radio" [(ngModel)]="newClassification.addIfPrevTypeisSame" name="addToPrev" value="N"> No
+      </div>
+      <div class="form-group">
+        <label>Priority</label>
+        <input type="text" [(ngModel)]="newClassification.priority" class="form-control textbox_width" placeholder="Priority">
+      </div>-->
+      <div class="form-group sidebyside">
+        <label class="normalfont">Sample file</label>
+        <input type="file" class="form-control textbox_width1" [(ngModel)]="newClassification.fileName" (change)="fileChange($event)">
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="button" class="button-color" value="Add" (click)="onSubmit()">
+    </div>
+
+
+    <!--</fieldset>-->
+  </div>
+</div>
+<!--<div class="screen-block"></div>-->

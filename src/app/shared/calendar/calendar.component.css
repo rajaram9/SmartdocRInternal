@@ -1,0 +1,44 @@
+.calendar-wrap{
+    max-width: 100%;
+    position: relative;
+    background-color: white;
+}
+.calendar-selection{
+    padding: 5px;
+    display: flex;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    justify-content: space-between;
+}
+.calendar-icon{
+    margin-right: 5px;
+}
+.calendar-selection-icon{
+    margin-left: 5px;
+}
+.calendar-picker{
+    display: none;
+    position: absolute;
+    right:  0;
+    margin-top: 1px;
+    border: 1px solid #ccc;
+    background-color: white;
+    z-index: 10;
+}
+.calendar-picker.active{
+    display: block;
+}
+.calendar-picker-selection{
+display: flex;
+}
+.calendar-action{
+    text-align: right;
+    margin: 10px;
+    color: #27a7e5;
+}
+.calendar-action span{
+cursor: pointer;
+}
+.calendar-action .over-icon{
+    color: white;
+}

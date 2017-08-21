@@ -1,0 +1,65 @@
+<div class="grid">
+  <div class="grid-row">
+    <div class="grid-cell grid-header-item" [ngStyle]="{'width': columnWidth+'%'}" [ngClass]="{'tools-enabled':mouseOverColumn==i}"
+      (mouseover)="addMouseOver(i)" (mouseleave)="removeMouseOver(i)" *ngFor="let gridHeader of gridHeaders;let i=index">
+      {{gridHeader.name}}
+    </div>
+  </div>
+  <div class="grid-row" *ngFor="let gridRow of gridData">
+    <div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}">{{gridRow.batchid }}</div>
+    <div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}" si-tooltip data-toggle="tooltip" data-placement="bottom" title="{{gridRow.batchname}}">{{gridRow.batchname }}</div>
+    <div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}" si-tooltip data-toggle="tooltip" data-placement="bottom" title="{{gridRow.queue}}">
+      <select [ngModel]="gridRow.queueID">
+        <option value="8">Auto Classify</option>
+        <option value="6">Manual Classify</option>
+        <option value="9">Auto Extract</option>
+        <option value="7">Manual Extract</option>
+      </select>
+    </div>
+    <div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}" si-tooltip data-toggle="tooltip" data-placement="bottom" title="{{gridRow.status}}">
+      <select [ngModel]="gridRow.statusID">
+        <option value="2">Not started</option>
+        <option value="1">In progress</option>
+        <option value="0">Incomplete</option>
+        <option value="3">Completed</option>
+        <option value="5">Cancelled</option>
+        <option value="0">Paused</option>
+      </select>
+    </div>
+    <div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}" si-tooltip data-toggle="tooltip" data-placement="bottom" title="{{'Total page:'+gridRow.totalnoofpages}}">
+      <si-progressbar class="progressbar" [maxValue]="(gridRow.queueID==9)? gridRow.noofExtractions:gridRow.totalnoofpages" [height]=10
+        [value]=gridRow.processingpages></si-progressbar>
+    </div>
+    <!--<div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}">{{gridRow.eta }}</div>-->
+    <div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}">{{gridRow.received }}</div>
+    <div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}">{{gridRow.classifieddocs }} <span *ngIf="gridRow.classifydocs"> ({{gridRow.classifydocs }})</span> </div>
+    <div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}">{{gridRow.unClassifieddocs }}</div>
+    <div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}">
+      <select>
+  <option value="rush">Rush</option>
+  <option value="normal" selected >Normal</option>
+</select>
+    </div>
+    <div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}">
+      <select>
+        <option value="processing">Processing</option>
+        <option value="underwriting">Underwriting</option>
+        <option value="closing">Closing</option>
+        <option value="postclosing">Post closing</option>
+        </select>
+    </div>
+    <div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}">
+      <select>
+      <option value="">John</option>
+      <option value="">Williams</option>
+      <option value="">Robin</option>
+</select>
+    </div>
+    <div class="grid-cell" [ngStyle]="{'width': columnWidth+'%'}">{{gridRow.notes }}</div>
+
+    <div class="grid-row-action-btns">
+      <div class="grid-row-action-btn" (click)="openClassification(gridRow.batchname)"> <i class="fa fa-object-ungroup"></i> </div>
+      <div class="grid-row-action-btn" (click)="openExtraction(gridRow.batchname,gridRow.batchid)"> <i class="fa fa-object-group"></i></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,150 @@
+<div class="doc-wrap">
+  <div class="document-type-list">
+    <div class="action-bar">
+      <div class="action-btns">
+        Document Type
+        <input type="button" value="new" (click)="openNewClassification()" class="action-btn">
+      </div>
+    </div>
+    <div class="document-type-item" *ngFor="let docType of distinctDocType|DocTypePipe:searchKeyword; let i=index" (click)="openDoc(docType)">
+      <div class="document-type-item-index">{{i+1}} </div>
+      <div class="document-type-item-text">{{ docType}}</div>
+    </div>
+  </div>
+  <div class="document-type-detail-viewer" *ngIf="selectedDocTypes">
+    <div class="doc-config-item">
+      <div><span>Document Type</span>
+        <span contenteditable='true' docSummaryDirective [docType]="selectedDocTypeSummary?.docTypeName" [docProperty]="'docTypeName'"
+          (docSummaryChange)="onDocSummaryChange($event)" [(ngModel)]="selectedDocTypeSummary.docTypeName" ngDefaultControl>{{selectedDocTypes.docTypeName}}</span></div>
+      <div><span>Min Pages</span>
+        <span contenteditable='true' docSummaryDirective [docType]="selectedDocTypeSummary?.docTypeName" [docProperty]="'minPages'"
+          (docSummaryChange)="onDocSummaryChange($event)" [(ngModel)]="selectedDocTypeSummary.minPages" ngDefaultControl>{{selectedDocTypeSummary?.minPages}}</span></div>
+      <div><span>Max Pages</span>
+        <span contenteditable='true' docSummaryDirective [docType]="selectedDocTypeSummary?.docTypeName" [docProperty]="'maxPages'"
+          (docSummaryChange)="onDocSummaryChange($event)" [(ngModel)]="selectedDocTypeSummary.maxPages" ngDefaultControl>{{selectedDocTypeSummary?.maxPages}}</span></div>
+      <div><span>Having Page Numbers</span>
+        <span contenteditable='true' docSummaryDirective [docType]="selectedDocTypeSummary?.docTypeName" [docProperty]="'havingPageNumbers'"
+          (docSummaryChange)="onDocSummaryChange($event)" [(ngModel)]="selectedDocTypeSummary.havingPageNumbers" ngDefaultControl>{{selectedDocTypeSummary?.havingPageNumbers}}</span></div>
+      <div><span>Page Number Format</span>
+        <span contenteditable='true' docSummaryDirective [docType]="selectedDocTypeSummary?.docTypeName" [docProperty]="'pageNumberFormat'"
+          (docSummaryChange)="onDocSummaryChange($event)" [(ngModel)]="selectedDocTypeSummary.pageNumberFormat" ngDefaultControl>{{selectedDocTypeSummary?.pageNumberFormat}}</span></div>
+      <div><span>Add If Prev Type Same</span>
+        <span contenteditable='true' docSummaryDirective [docType]="selectedDocTypeSummary?.docTypeName" [docProperty]="'addIfPrevTypeisSame'"
+          (docSummaryChange)="onDocSummaryChange($event)" [(ngModel)]="selectedDocTypeSummary.addIfPrevTypeisSame" ngDefaultControl>{{selectedDocTypeSummary?.addIfPrevTypeisSame}}</span></div>
+      <div><span>Priority</span>
+        <span contenteditable='true' docSummaryDirective [docType]="selectedDocTypeSummary?.docTypeName" [docProperty]="'priority'"
+          (docSummaryChange)="onDocSummaryChange($event)" [(ngModel)]="selectedDocTypeSummary.priority" ngDefaultControl>{{selectedDocTypeSummary?.priority}}</span></div>
+    </div>
+
+    <div class="doc-config-keywords">
+      <div class="doc-config-keyword-header">
+        <div>Keyword</div>
+        <div>Page Position</div>
+        <div>% Of Similarity</div>
+        <div>Threshold %</div>
+        <div>Zone Area</div>
+        <div>Case Sensitive</div>
+        <div class="doc-lastbutton"></div>
+      </div>
+      <div class="doc-config-keyword" *ngFor="let data of selectedDocTypes ;let configIndex=index">
+        <div contenteditable='true' [(ngModel)]="data.Keyword" ngDefaultControl>{{data.keyword}}</div>
+        <div>
+          <select [(ngModel)]="data.pagePosition">
+						<option value="First">First</option>
+						<option value="Last">Last</option>
+						<option value="Addtional">Addtional</option>
+					</select>
+        </div>
+        <div contenteditable='true' [(ngModel)]="data.percentageofsimilarity" ngDefaultControl>{{data.percentageofsimilarity}}</div>
+        <div contenteditable='true' [(ngModel)]="data.keywordThresholdpercetage" ngDefaultControl>{{data.keywordThresholdpercetage}}</div>
+        <div>
+          <select [(ngModel)]="data.zoneArea">
+						 <option value="Fullpage">Fullpage</option>
+                         <option value="FirstHalfofpage">FirstHalfofpage</option>
+                         <option value="SecondHalfofpage">SecondHalfofpage</option>
+                         <option value="LeftSideofpage">LeftSideofpage</option>
+                         <option value="RightSideofpage">RightSideofpage</option>
+                         <option value="OneThirdofpage">OneThirdofpage</option>
+                         <option value="SecondThirdofpage">SecondThirdofpage</option>
+                         <option value="LastThirdofpage">LastThirdofpage</option>
+                         <option value="OneFourthofpage">OneFourthofpage</option>
+                         <option value="SecondFourthofpage">SecondFourthofpage</option>
+                         <option value="ThreeFouthofpage">ThreeFouthofpage</option>
+                         <option value="LastFouthofpage">LastFouthofpage</option>
+					</select>
+        </div>
+        <div>
+          <select [(ngModel)]="data.casesensitive">
+                      <option value="1">true</option>
+					  <option value="0">false</option>
+					</select>
+        </div>
+        <!--<div contenteditable='true' [(ngModel)]="data.Casesensitive" ngDefaultControl>{{data.Casesensitive}}</div>-->
+      </div>
+    </div>
+
+    <!--- New Key word form-->
+    <div class="new-keyword-btn" [ngClass]="{'active':newKeywordActive,'closed':newKeywordActive==false}" (click)="newKeywordActive=true">
+      <i class="fa fa-plus fa-2x" *ngIf="!newKeywordActive" aria-hidden="true"></i>
+      <div class="new-keyword-panel" [ngClass]="{'active':newKeywordActive}">
+        <div class="panel-close" (click)="closeNewKeywordpanel($event)">
+          <i class="fa fa-times " aria-hidden="true"></i>
+        </div>
+        <div class="new-keyword-panel-item first">
+          <label>Keywords</label><br/>
+          <input type="text" class="form-control" [(ngModel)]="newClassificationKeywordProperty.keyword" placeholder="Keywords">
+        </div>
+        <div class="new-keyword-panel-item">
+          <label>Page Position</label>
+          <select class="form-control" [(ngModel)]="newClassificationKeywordProperty.pagePosition">
+						<option value="First">First</option>
+						<option value="Last">Last</option>
+						<option value="Addtional">Addtional</option>
+					</select>
+        </div>
+        <div class="new-keyword-panel-item">
+          <label>% Of Similarity</label>
+          <input type="text" placeholder="% Of Similarity" [(ngModel)]="newClassificationKeywordProperty.percentageofsimilarity" class="form-control">
+        </div>
+        <div class="new-keyword-panel-item">
+          <label>Threshold %</label>
+          <input type="text" placeholder="Threshold %" [(ngModel)]="newClassificationKeywordProperty.keywordThresholdpercetage" class="form-control">
+        </div>
+        <div class="new-keyword-panel-item">
+          <label>Zone Area</label>
+          <select class="form-control" [(ngModel)]="newClassificationKeywordProperty.zoneArea">
+						 <option value="Fullpage">Fullpage</option>
+                         <option value="FirstHalfofpage">FirstHalfofpage</option>
+                         <option value="SecondHalfofpage">SecondHalfofpage</option>
+                         <option value="LeftSideofpage">LeftSideofpage</option>
+                         <option value="RightSideofpage">RightSideofpage</option>
+                         <option value="OneThirdofpage">OneThirdofpage</option>
+                         <option value="SecondThirdofpage">SecondThirdofpage</option>
+                         <option value="LastThirdofpage">LastThirdofpage</option>
+                         <option value="OneFourthofpage">OneFourthofpage</option>
+                         <option value="SecondFourthofpage">SecondFourthofpage</option>
+                         <option value="ThreeFouthofpage">ThreeFouthofpage</option>
+                         <option value="LastFouthofpage">LastFouthofpage</option>
+					</select>
+        </div>
+        <div class="new-keyword-panel-item">
+          <label>Case Sensitive</label>
+          <select [(ngModel)]="newClassificationKeywordProperty.casesensitive" class="form-control">
+                      <option value="1">true</option>
+					  <option value="0">false</option>
+					</select>
+          <!--<input type="text" placeholder="Case Sensitive" [(ngModel)]="newClassificationKeywordProperty.Casesensitive" class="form-control">-->
+        </div>
+        <div class="new-keyword-panel-item last">
+          <input type="button" value="Add" (click)="addNewKeyword(selectedDocTypes)" class="btn">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="span4 col-md-3 col-md-offset-6">
+  <input type="button" class="btn btn-success" (click)="submit()" value="Save">
+</div>
+
+<si-new-classification-config *ngIf="newClassificationOpen" (submit)="onNewClassificationCreate($event)" (close)="newClassificationOpen=false"  ></si-new-classification-config>

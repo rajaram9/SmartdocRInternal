@@ -1,0 +1,40 @@
+<div class="work-area">
+
+  <div class="work-area-item">
+    <si-icon-nav [active]=activeNavItem (navItemChanged)="onNavItemChanged($event)"></si-icon-nav>
+  </div>
+
+  <si-batch-move [docTypes]="docTypes" (moveToOtherBatch)="moveToOtherBatch($event)" (moveToOther)="movePages($event)" (moveToNew)="moveToNewDocType($event)"
+    (close)="closeBatchMoveWindow()" *ngIf="activeNavItem=='move'">
+  </si-batch-move>
+
+  <div class="work-area-item workspace" [style.width]="overallpercentage + '%'">
+    <div tabindex="0" #focus [siFocus]='hotkeyItemIndex===1' class="doc-viewer" [ngClass]="{'hide':!showdocViewer}" [style.width]="viewerpercentage + '%'">
+      <si-doc-viewer [viewerWidth]='"100%"' [doc]=currentActiveDoc [Frompage]='"Classify"'></si-doc-viewer>
+    </div>
+    <div tabindex="0" #focus [siFocus]='hotkeyItemIndex===2' class=" work-area-item doc-carousel" [style.width]="percentage + '%'">
+      <div style="text-align: right">
+<p-checkbox name="groupname" value="Classify" label="Classify" [(ngModel)]="selectedClassifyStatus" class="chkClassify">
+</p-checkbox>
+<p-checkbox name="groupname" value="UnClassify" label="UnClassify" [(ngModel)]="selectedClassifyStatus" class="chkUnClassify"></p-checkbox>
+</div>
+<si-image-carousel #imageCarousel [docTypes]="docTypes" [width]=255 [height]=300 [selectDoc]=selectDoc (selectForMove)="pagesSelectedForMove=$event"
+  [selectedClassifyStatus]="selectedClassifyStatus" (imageForViewer)=onDocSelected($event)></si-image-carousel>
+</div>
+</div>
+
+<div class="v-spliter" (click)="toggleDocSideBar()">
+  <div>
+    <i class="fa fa-caret-left" aria-hidden="true"></i>
+  </div>
+  <div>
+    <i class="fa fa-caret-right" aria-hidden="true"></i>
+  </div>
+</div>
+
+
+<div tabindex="0" #focus [siFocus]='hotkeyItemIndex===3' class="work-area-item" [ngClass]="{'hide':!docSideBarEnabled}">
+  <si-document-side-bar (pageSelect)="selectDoc=$event;onPageSelect($event)" (docTypeDrag)="onDocTypeDrag($event)" (pdf)="onPdfRequest($event)"
+    (save)="onSave()" (pagedrag)="onDrag($event)" [docTypes]="docTypes" [batchName]="batchName"></si-document-side-bar>
+</div>
+</div>

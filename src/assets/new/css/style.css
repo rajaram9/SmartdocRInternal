@@ -1,0 +1,117 @@
+img{max-width: 100%;}
+body{font-family: 'Noto Sans', sans-serif;}
+body,html{
+    height: 100%;
+    font-size: 14px;
+}
+a:hover,a:active{text-decoration: none;}
+i{color: #dedede;}
+
+/*indexpage*/
+header{background: #51c8ea; height: 34px;}
+header h1{font-size: 14px;font-weight: 400;margin: 10px 0;}
+header .right-head ul li{float: left; border-right: 1px solid #000;margin: 10px 0px;padding: 0 8px;font-size: 14px;}
+header .right-head ul li:last-child{border-right: none;}
+.middle-content{background-repeat: no-repeat; overflow: auto; background-position:center center; background-size:cover; height: calc(100% - 34px);position: relative;}
+.get-start{background: #51c8ea;width: 500px;position: absolute;left:50%;top: 50%;transform: translate(-50%, -50%);padding: 15px;margin-top: auto; }
+.get-start h3,.get-start p{font-size: 18px;margin: 10px 0;}
+.get-start .button.btn-gray{font-size: 16px;margin-left: 5px;}
+.get-start .button.btn-blue{width: 49%;}
+.button{display: inline-block;padding: 6px 15px;background: red;color: #fff;font-size: 14px;margin: 3px 0;}
+.logo-img{border-radius: 50%;background: #000;width: 100px;height: 100px;margin: auto;color: #fff;font-size: 18px;padding-top: 35px;}
+.button-top{margin-bottom: 40px;}
+.addClient a{color: #000;}
+
+.button:hover,.button:active{color: #fff; text-decoration: none;}
+.btn-gray{background: #18b081}
+.btn-blue{background: #10a9b7;}
+.btn-gray{background: #dedede;}
+.btn-tabs{width: 150px; text-align: center;display: inline-block;}
+.btn-block{display: block;}
+.companyDetails .formGroup{margin-bottom: 5px;}
+
+
+
+/*classficationPage*/
+.nav-left{background: #fff;font-size: 14px;}
+.nav-left ul li a {display: block;padding: 15px 10px;color: #000;}
+
+.nav-left ul li a:hover,.nav-left ul li a.active{background: #51c8ea;}
+.contentRight{background: #fff;}
+.defaultNav{padding: 20px 0;}
+.defaultNav ul li{list-style: circle;display: inline-block;}
+.defaultNav ul li i{color: #dedede;margin: 0 10px 0 20px;}
+.defaultNav ul li a{padding: 5px; color: #303030;}
+.customTop{margin-top: 20px;margin-bottom: 20px;}
+.customProcess h4{margin: 10px 0;}
+.customProcess .custom-nav ul li a {display: block;padding: 10px 0;margin: 1px 0;color:#303030; }
+.customProcess .custom-nav ul li a:hover,.customProcess .custom-nav ul li a:active{background: #10a9b7}
+.customRight {border: 1px dotted #8e8e8f;height: 315px;margin-top: 35px;}
+.butttonFields {width: 70%;margin: auto;margin-top: 20px;}
+.butttonFields ul li{float: left;width: 47%;margin-right: 10px;}
+.dragPoint{line-height: 220px;}
+
+
+/*secondPage*/
+.contentRight{ background-color: #fff;-webkit-box-shadow: 5px -1px 5px -3px rgba(128,121,128,1);
+-moz-box-shadow: 5px -1px 5px -3px rgba(128,121,128,1);
+box-shadow: 5px -1px 5px -3px rgba(128,121,128,1);border-radius: 5px;}
+/*.heading{margin-top: 50px}*/
+.companyHeading{background: #51c8ea;padding: 2px 50px;}
+.companyDetails{margin-top: 30px}
+/*.form{float: left; width: 53%;}*/
+.subButton{margin: 30px 0;}
+.btn-gry{background: #d8d8d8;}
+.buttonEdit{padding: 6px 30px;}
+.companyDetails label{float: left;padding-right: 5px; line-height: 28px;width: 135px;text-align: right;}
+/*.companyDetails input{width: 50%;float: right;}*/
+.companyDetails select,.companyDetails input{float: right;;width: 51%;}
+.companyDetails input.form{width: 70%;}
+.content{width: 93%;margin: auto;}
+.mid-right{padding: 10px;}
+.formLabel{margin-right: 7px;}
+.companyDetails .formSmall{float: left;width: 30.5%;}
+.companyDetails .form-small{float: left;width: 34%;}
+.companyDetails .formTextArea{float: left;width: 85%;}
+.companyDetails .labelSmall{width: auto;padding-left: 8px;}
+.companyDetails.compantForm{margin-top: 0px;}
+.btn-space{margin: 20px 20px;}
+.clickAdd{color: #fff;font-size: 22px;background: gray;border-radius: 50%;width: 20px;display: inline-block;text-align: center;height: 20px;line-height: 16px;margin: 0 5px;}
+
+/*permissionsPage*/
+.teaxt-heading{padding: 10px 10px;}
+.customTop h5{padding: 5px 0;width: 200px;}
+.roles ul li{text-align: left;margin: 15px 0;}
+.roles ul li i{margin-right: 10px;}
+.roles{padding-left: 20px;}
+.roles a{display: inline-block;text-align: left;padding: 5px 30px;color: #000;float: left;}
+.roles ul li span{width: 180px;display: inline-block;}
+.custom-right{margin-left: 10px;}
+.permissions h6{margin-top: 2px;}
+
+
+/* table start*/
+
+table th { background-color: #51c8ea;}
+.processTable th,td{border:none !important;}
+
+/* table end */
+
+/* Edit Details start */
+
+.editDetails{background: #dedede; padding: 1px 0px}
+.editDetails .button:hover{color: #000;}
+.formEdit{float: left;width: 165px; margin-bottom: 10px;}
+.forms{float: left; width:65%; margin-bottom: 10px;}
+.edit{width: 230px;background: #51c8ea;line-height: 29px;text-align: center;}
+.tableDetails{margin-top: 20px;}
+.tableDetails table th,td{text-align: center;}
+/*.content-scrool{position: relative;}*/
+/*.content-scrool .contentRight{overflow-x: hidden;overflow-y: auto;}*/
+/* Edit Details end */
+
+
+/*operatorPage*/
+.check-form{display: inline-block;border: 1px solid #dedede;padding: 5px 5px;width: 110px;text-align: left;margin-left: 10px;}
+.actLabel{margin-left: 5px;color: #dedede;}
+.customProcess{margin: 40px 0 70px 0;}

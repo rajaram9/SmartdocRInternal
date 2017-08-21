@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4c0eba6fea4041cf95ad481cfe0e7e1e" Name="Diagram1">
+        <EntityTypeShape EntityType="SMARTINDEXModel.Classification" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.Client" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.Lob" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.Process" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.Status" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.StatesMaster" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.ZipCodeMaster" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.BatchExtraction" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.UserRole" Width="1.5" PointX="10.375" PointY="5.125" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.Cst_Keywords" Width="1.5" PointX="10.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.Cst_DocTypes" Width="1.5" PointX="7.375" PointY="10.75" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.ClientMappingDocType" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.BatchAudit" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.Batch" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.BatchAutoExtraction" Width="1.5" PointX="12.375" PointY="3.75" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.Cst_DocName" Width="1.5" PointX="12.375" PointY="7.75" />
+        <EntityTypeShape EntityType="SMARTINDEXModel.ExtractionConfig" Width="1.5" PointX="9.375" PointY="12.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

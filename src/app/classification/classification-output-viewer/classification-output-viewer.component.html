@@ -1,0 +1,67 @@
+<header></header>
+<div class="title">
+  <h3>
+    {{parentfilename}}
+  </h3>
+  <si-bootstrap-progressbar [valuenow]="Processingfiles.processingpages" [valuemin]=0 [valuemax]="Processingfiles.totalpages"></si-bootstrap-progressbar>
+</div>
+<div class="output-wrap">
+  <div class="doc-section classified-docs">
+    <div class="header">
+      Classified Documents
+      <i class="fa fa-download zip-download" aria-hidden="true" (click)="downloadZip()"></i>
+    </div>
+    <div class="group" *ngFor="let key of formatedClassifiedOutputKeys">
+      <div class="group-header">
+        {{key}}
+      </div>
+      <div class="group-items">
+        <table class="group-items-table">
+          <thead>
+            <tr>
+              <td class="sl-no">#</td>
+              <td class="name">Name</td>
+              <td class="created">Created</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let file of formatedClassifiedOutput[key].pages;let i=index">
+              <td class="sl-no">{{i+1}}</td>
+              <td class="name"><a href="{{apiUrl+file.filepath}}" target="_blank">{{file.filename}}</a></td>
+              <td class="created">{{file.createddate | date:"MM/dd/yy hh:mm"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class=" doc-section un-classified-docs">
+    <div class="header">
+      Unclassified Documents
+      <i class="fa fa-download zip-download" aria-hidden="true" (click)="downloadZip1()"></i>
+    </div>
+    <div class="group">
+      <div class="group-header">
+        UnKnown
+      </div>
+      <div class="group-items">
+        <table class="group-items-table">
+          <thead>
+            <tr>
+              <td class="sl-no">#</td>
+              <td class="name">Name</td>
+              <td class="created">Created</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let unClassifiedOutput of formatedUnClassifiedOutput;let i=index">
+              <td class="sl-no">{{i+1}}</td>
+              <td class="name"><a href="{{apiUrl+unClassifiedOutput.filepath}}" target="_blank">{{unClassifiedOutput.filename.split('~')[1]+' '+ (i+1)}}</a></td>
+              <td class="created">{{unClassifiedOutput.createddate | date:"MM/dd/yy hh:mm"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

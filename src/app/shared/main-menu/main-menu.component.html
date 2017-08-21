@@ -1,0 +1,14 @@
+<div class="menu-beak">
+</div>
+<div class="wrap">
+  <div class="menus">
+    <div class="item" routerLink="/{{link.link}}" *ngFor="let link of mainMenuLinks">
+      <div class="icon">
+        <i class="fa  fa-2x {{link.icon}}" aria-hidden="true"></i>
+      </div>
+      <div class="caption">
+        {{link.text}}
+      </div>
+    </div>
+  </div>
+</div>

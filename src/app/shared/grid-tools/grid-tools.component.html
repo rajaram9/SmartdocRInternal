@@ -1,0 +1,18 @@
+<div class="grid-tools">
+    <div class="grid-tools-btns">
+        <div class="grid-tools-btn" [ngClass]="{'active':active==1}" (click)="active=1">
+            <i class="  fa fa-filter fa-lg" aria-hidden="true"></i>
+        </div>
+        <div class="grid-tools-btn" [ngClass]="{'active':active==2}" (click)="active=2">
+            <i class="  fa fa-sort-alpha-asc fa-lg" aria-hidden="true"></i>
+        </div>
+        <div class="grid-tools-btn" [ngClass]="{'active':active==3}" (click)="active=3">
+            <i class="fa fa-sort-alpha-desc fa-lg" aria-hidden="true"></i>
+        </div>
+    </div>
+    <div class="filter-items">
+        <div class="filter-item" *ngFor="let item of filterArray">
+            <input type="checkbox" > {{item.val}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<!--<div #imageWrap class="image-data-wrap">
+  <div *ngFor="let data1 of filterdata;let j=index">
+    <div><pre>{{data1.groupName}}</pre></div>
+    <div *ngFor="let data of data1.pages;let i=index; let last = last">
+      <div class="data-image " [ngClass]="{ 'focus':i===currentImageSelected, 'selected':data.isSelected} " [ngStyle]="{'width.px':width, 'height.px':height} ">
+        <div class="status " [ngClass]="{ 'green':data.isClassified===true, 'red':data.isClassified===false} "></div>
+        <img src="{{imagePath+data.path}} " on-click="onEvent($event,data) " />
+        <div class="caption ">
+          <input type="checkbox " (click)=selectionChange() [(ngModel)]=data.isSelected> {{data.displayName}}
+        </div>
+      </div>
+      <div *ngIf="last == true">
+        {{(i+1) % 3}}
+        <div *ngIf="(i+1) % 3 == 0">
+          <br [style.line-height.px]="((height+20) * ((i+1) / 3))">
+        </div>
+        <div *ngIf="(i+1) % 3 == 1">
+          <br [style.line-height.px]="((height+20) * ((i+3) / 3))">
+        </div>
+        <div *ngIf="(i+1) % 3 == 2">
+          <br [style.line-height.px]="((height+20) * ((i+2) / 3))">
+        </div>
+      </div>
+    </div>
+    <!--<div>
+  <br style="line-height:300px"></div>-->
+
+<!--</div>
+
+</div>-->
+<div #imageWrap class="image-data-wrap">
+  <div *ngFor="let data of imageData;let i=index">
+    <div *ngIf="(data.pageIndex === 0) && (data.totalpageindoc != 0)">
+      <!--{{data.totalpageindoc}} {{numberOfImageInRow }}-->
+      <div *ngIf="(data.totalpageindoc) % numberOfImageInRow == 0">
+        <br [style.line-height.px]="((height+data.extraheight) * ((data.totalpageindoc) / numberOfImageInRow))">
+      </div>
+      <div *ngIf="(data.totalpageindoc) % numberOfImageInRow == 1">
+        <br [style.line-height.px]="((height+data.extraheight) * ((data.totalpageindoc+(numberOfImageInRow-1)) / numberOfImageInRow))">
+      </div>
+      <div *ngIf="(data.totalpageindoc) % numberOfImageInRow == 2">
+        <br [style.line-height.px]="((height+data.extraheight) * ((data.totalpageindoc+(numberOfImageInRow-2)) / numberOfImageInRow))">
+      </div>
+      <div *ngIf="(data.totalpageindoc) % numberOfImageInRow == 3">
+        <br [style.line-height.px]="((height+data.extraheight) * ((data.totalpageindoc+(numberOfImageInRow-3)) / numberOfImageInRow))">
+      </div>
+      <div *ngIf="(data.totalpageindoc) % numberOfImageInRow == 4">
+        <br [style.line-height.px]="((height+data.extraheight) * ((data.totalpageindoc+(numberOfImageInRow-4)) / numberOfImageInRow))">
+      </div>
+
+
+      <!--<div *ngIf="(data.totalpageindoc) > numberOfImageInRow">
+            <br [style.line-height.px]="((height+20) * ((data.totalpageindoc+2) / numberOfImageInRow))">
+          <div>
+           <div *ngIf="(data.totalpageindoc)<= numberOfImageInRow">
+             <br [style.line-height.px]="((height+20) * ((data.totalpageindoc+1) / numberOfImageInRow))">
+          <div>-->
+    </div>
+    <div *ngIf="data.pageIndex === 0" style="font-weight: bold;text-align: center;width: 99%;display: inline-block;">
+<pre style="padding: 3.5px;text-align: center; ">{{data.groupName}}</pre>
+</div>
+<div class="data-image" [ngClass]="{'focus':i===currentImageSelected,'selected':data.isSelected}" [ngStyle]="{'width.px':width,'height.px':height}">
+  <div class="status" [ngClass]="{'green':data.isClassified===true,'red':data.isClassified===false}"></div>
+  <img src="{{imagePath+data.path}}" on-click="onEvent($event,data)" />
+  <div class="caption">
+    <input type="checkbox" (click)=selectionChange() [(ngModel)]=data.isSelected> {{data.displayName}}
+  </div>
+</div>
+</div>
+</div>
+
+
+<!--<div *ngFor="let data of data1.pages;">
+  <div class="data-image" [ngClass]="{'focus':i===currentImageSelected,'selected':data.isSelected}" [ngStyle]="{'width.px':width,'height.px':height}">
+    <div class="status" [ngClass]="{'green':data.isClassified===true,'red':data.isClassified===false}"></div>
+    <img src="{{imagePath+data.path}}" on-click="onEvent($event,data)" />
+    <div class="caption">
+      <input type="checkbox" (click)=selectionChange() [(ngModel)]=data.isSelected> {{data.displayName}}
+    </div>
+  </div>
+</div>-->
+
+<!--<div>{{docTypes | json}}</div>-->

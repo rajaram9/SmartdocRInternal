@@ -1,0 +1,77 @@
+[tabindex] {
+    border: 2px solid transparent;
+}
+
+:focus {
+    border: 2px solid #ddd;
+}
+
+.work-area {
+    display: flex;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.workspace {
+    margin-left: 5px;
+    background-color: white;
+    min-height: 95vh;
+    display: flex;
+    justify-content: space-between;
+    // width: 80%;
+    min-width: 80%;
+}
+
+.doc-viewer {
+    height: 95vh;
+    //width: 40%;
+    overflow: auto;
+}
+
+.doc-carousel {
+    //  height: 90vh;
+    width: 60%;
+    // overflow: auto;
+}
+
+si-batch-move {
+    position: absolute;
+    left: 50px;
+    z-index: 99;
+    background-color: white;
+    top: 10px;
+}
+
+.chkClassify {
+    .ui-state-active {
+        background: green !important;
+    }
+}
+
+.chkUnClassify {
+    .ui-state-active {
+        background: red !important;
+    }
+}
+
+.v-spliter {
+    border: 1px solid #585252;
+    border-top: none;
+    border-bottom: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 5px 0 5px;
+    display: table;
+    height: 100vh;
+    border-spacing: 1px;
+    padding-top: 20%;
+    font-size: 30px;
+    color: white;
+    background-color: #655f5f;
+    i {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+    }
+}

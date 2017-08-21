@@ -1,0 +1,243 @@
+<div class="doc-wrap">
+  <div style="width: 18%">
+<div>
+  <si-doc-search (searchKeyword)=onsearch($event)></si-doc-search>
+</div>
+<div class="document-type-list">
+  <div *ngFor="let docType of distinctDocType|DocTypePipe:searchKeyword; let i=index">
+    <div class="document-type-item" [style.background]="docType === selectedDocType.docName ?'#5bc0de':'#ffffff'">
+      <div class="document-type-item-index">{{i+1}} </div>
+      <div class="document-type-item-text" (click)="openDoc(docType)">{{docType}}</div>
+      <div class="document-type-item-icon" *ngIf="docType !== selectedDocType.docName"><i class="fa fa-plus" aria-hidden="true"></i></div>
+      <div class="document-type-item-icon" *ngIf="docType === selectedDocType.docName"><i class="fa fa-minus" aria-hidden="true"></i></div>
+    </div>
+    <div *ngIf="docType === selectedDocType.docName">
+      <div *ngFor="let data of selectedDocType.docTypeName ;let configIndex=index">
+        <div class="document-type-item document-type-detail-viewer " *ngIf="data.isdeleteddN === false" (click)="openDocType(configIndex,docType)"
+          [style.background]="selectedDocTypeName === data?.docTypeName ?'rgba(0, 188, 212, 0.2)':'#f9f9f9'">
+          <div class="document-type-item-subtext">{{data?.docTypeName}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div style="width: 82%">
+<div style="display:flex; ">
+<div class="add-new-docname">
+  <input type="button" value="New Doc Name" (click)="openNewClassification()" class="action-btn"></div>
+<!--<i class="fa fa-plus-circle fa-3x" (click)="openNewClassification()" aria-hidden="true"></i>-->
+<div class="add-new-docname" *ngIf="selectedDocType !== ''">
+  <input type="button" value="New Doc Type" (click)="openNewDocType()" class="action-btn"></div>
+</div>
+<div class="document-type-details">
+  <div class="document-type-detail-wrap">
+    <div *ngIf="newClassificationOpen" style="width:100%; text-align:center;">
+<div style="text-align:center;margin: 0px auto;">
+<si-new-classification-config (submit)="onNewClassificationCreate($event)" (close)="newClassificationOpen=false" [distinctDocType]="distinctDocType"
+  [selectedDocType]="selectedDocType" [clickonnewdoctype]="clickonnewdoctype" [Newdocname]="yes"></si-new-classification-config>
+</div>
+</div>
+<div *ngIf="!clickonnewdoctype">
+  <div *ngFor="let data of selectedDocType.docTypeName|DocTypeNamePipe:selectedDocTypeName ;let configIndex=index">
+    <div class="document-type-detail-viewer" *ngIf="data.isdeleteddN === false">
+      <div class="sameline">
+        <div class="selected-item"><span>Document name selected : </span>
+          <span>{{selectedDocType?.docName}}</span>
+        </div>
+        <div class="selected-item"><span>Document type selected : </span>
+          <span>{{data?.docTypeName}}</span>
+        </div>
+      </div>
+      <div>
+        <div class="doc-config-item">
+          <div class="flex_item_docType"><span>Document Type</span></div>
+          <div class="flex_item_docTypeValue">
+            <span contenteditable='true' siDocSummaryDirective [docType]="data?.docTypeName" [docProperty]="'docTypeName'" [(ngModel)]="data.docTypeName"
+              (docSummaryChange)="onDocSummaryChange($event,selectedDocType.docName)" ngDefaultControl>{{data?.docTypeName}}</span></div>
+          <div class="doc-config-item-sub-div"></div>
+          <div class="flex_item_attachment"><span>Attachment</span></div>
+          <div class="flex_item_attachmentvalue">
+            <span contenteditable='false' ngDefaultControl><i (click)="fileInput.click()" class="fa fa-paperclip fa-2x" aria-hidden="true" ></i><input style="display:none;" type="file" class="form-control" (change)="fileChange($event,selectedDocType.docName,data.docTypeName)" #fileInput >
+<a href="{{imagePath+data?.fileName}}" download>{{data?.fileName}}</a></span>
+</div>
+<div class="doc-config-item-sub-div"></div>
+<div class="flex_item_createdby"><span>Created by & Date</span></div>
+<div class="flex_item_createdbyvalue">
+  <span contenteditable='false' ngDefaultControl></span></div>
+<div class="doc-config-item-sub-div"></div>
+<div (click)="removeDocTypeName(data,configIndex)" class="flex_item_delete"><span></span><span contenteditable='false'> <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></span></div>
+</div>
+<div class="doc-config-item doc-config-item-sub">
+  <div><span>Min Pages</span>
+    <span contenteditable='true' siDocSummaryDirective [docType]="data?.docTypeName" [docProperty]="'minPages'" [(ngModel)]="data.minPages"
+      (docSummaryChange)="onDocSummaryChange($event,selectedDocType.docName)" ngDefaultControl>{{data?.minPages}}</span></div>
+  <div class="doc-config-item-sub-div"></div>
+  <div><span>Max Pages</span>
+    <span contenteditable='true' siDocSummaryDirective [docType]="data?.docTypeName" [docProperty]="'maxPages'" [(ngModel)]="data.maxPages"
+      (docSummaryChange)="onDocSummaryChange($event,selectedDocType.docName)" ngDefaultControl>{{data?.maxPages}}</span></div>
+  <div class="doc-config-item-sub-div"></div>
+  <div><span>Having Page Numbers</span>
+    <span contenteditable='true' siDocSummaryDirective [docType]="data?.docTypeName" [docProperty]="'havingPageNumbers'" [(ngModel)]="data.havingPageNumbers"
+      (docSummaryChange)="onDocSummaryChange($event,selectedDocType.docName)" ngDefaultControl>{{data?.havingPageNumbers}}</span></div>
+  <div class="doc-config-item-sub-div"></div>
+  <div><span>Page Number Format</span>
+    <span contenteditable='true' siDocSummaryDirective [docType]="data?.docTypeName" [docProperty]="'pageNumberFormat'" [(ngModel)]="data.pageNumberFormat"
+      (docSummaryChange)="onDocSummaryChange($event,selectedDocType.docName)" ngDefaultControl>{{data?.pageNumberFormat}}</span></div>
+  <div class="doc-config-item-sub-div"></div>
+  <div><span>Add If Prev Type Same</span>
+    <span contenteditable='true' siDocSummaryDirective [docType]="data?.docTypeName" [docProperty]="'addIfPrevTypeisSame'" [(ngModel)]="data.addIfPrevTypeisSame"
+      (docSummaryChange)="onDocSummaryChange($event,selectedDocType.docName)" ngDefaultControl>{{data?.addIfPrevTypeisSame}}</span></div>
+  <div class="doc-config-item-sub-div"></div>
+  <div><span>Priority</span>
+    <span contenteditable='true' siDocSummaryDirective [docType]="data?.docTypeName" [docProperty]="'priority'" [(ngModel)]="data.priority"
+      (docSummaryChange)="onDocSummaryChange($event,selectedDocType.docName)" ngDefaultControl>{{data?.priority}}</span></div>
+  <div class="doc-config-item-sub-div"></div>
+  <div><span>Extraction</span>
+    <span contenteditable='false' style="text-align: center;" (click)="movetoExtraction(data,configIndex)" ><i class="fa fa-cog fa-2x" aria-hidden="true"></i></span>
+</div>
+</div>
+<!---->
+
+<div class="doc-config-keywords">
+  <div class="doc-config-keyword-header">
+    <div>Keyword</div>
+    <div>Page Position</div>
+    <div>% Of Similarity</div>
+    <div>Threshold %</div>
+    <div>Zone Area</div>
+    <div>Case Sensitive</div>
+    <div></div>
+    <div class="doc-lastbutton"></div>
+  </div>
+  <div *ngFor="let data1 of data.keywords;let configIndex1=index">
+    <div class="doc-config-keyword" *ngIf="data1.isdeletedKy === false">
+
+      <div contenteditable='true' siDocSummaryDirective [docType]="data1?.keyword" [docProperty]="'keyword'" [(ngModel)]="data1.keyword"
+        (docSummaryChange)="onDocKeywordChange($event,selectedDocType.docName,data1.docTypeName)" ngDefaultControl>{{data1.keyword}}</div>
+      <div>
+        <select [(ngModel)]="data1.pagePosition">
+                                                    <option value="First">First</option>
+                                                    <option value="Last">Last</option>
+                                                    <option value="Addtional">Addtional</option>
+                                                </select>
+      </div>
+      <div contenteditable='true' [(ngModel)]="data1.percentageofsimilarity" siDocSummaryDirective [docType]="data1?.keyword" [docProperty]="'percentageofsimilarity'"
+        (docSummaryChange)="onDocKeywordChange($event,selectedDocType.docName,data1.docTypeName)" ngDefaultControl>{{data1.percentageofsimilarity}}</div>
+      <div contenteditable='true' [(ngModel)]="data1.keywordThresholdpercetage" siDocSummaryDirective [docType]="data1?.keyword"
+        [docProperty]="'keywordThresholdpercetage'" (docSummaryChange)="onDocKeywordChange($event,selectedDocType.docName,data1.docTypeName)"
+        ngDefaultControl>{{data1.keywordThresholdpercetage}}</div>
+      <div>
+        <select [(ngModel)]="data1.zoneArea" siDocSummaryDirective [docType]="data1?.keyword" [docProperty]="'zoneArea'" (docSummaryChange)="onDocKeywordChange($event,selectedDocType.docName,data1.docTypeName)"
+          ngDefaultControl>
+                                                    <option value="Fullpage">Fullpage</option>
+                                                    <option value="FirstHalfofpage">1st of ½ page</option>
+                                                    <option value="SecondHalfofpage">2nd  of ½ page</option>
+                                                    <option value="LeftSideofpage">Left ½ page</option>
+                                                    <option value="RightSideofpage">Right ½ page</option>
+                                                    <option value="OneThirdofpage">Top 1/3 page</option>
+                                                    <option value="SecondThirdofpage">Middle 1/3 page</option>
+                                                    <option value="LastThirdofpage">Bottom 1/3 page</option>
+                                                    <option value="OneFourthofpage">1st of ¼ page</option>
+                                                    <option value="SecondFourthofpage">2nd of ¼ page</option>
+                                                    <option value="ThreeFouthofpage">3rd of ¼ page</option>
+                                                    <option value="LastFouthofpage">4th of ¼ page</option>
+                                                </select>
+      </div>
+      <div>
+        <select [(ngModel)]="data1.casesensitive" siDocSummaryDirective [docType]="data1?.keyword" [docProperty]="'casesensitive'"
+          (docSummaryChange)="onDocKeywordChange($event,selectedDocType.docName,data1.docTypeName)" ngDefaultControl>
+                                                <option value="1">True</option>
+                                                <option value="0">False</option>
+                                                </select>
+      </div>
+      <div (click)="removeKeyword(data1,configIndex,configIndex1)"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+    </div>
+  </div>
+</div>
+
+</div>
+<!---->
+
+</div>
+</div>
+<!---->
+<!--<div *ngIf="!newClassificationOpen"></div>-->
+<div class="new-keyword-btn" [ngClass]="{'active':newKeywordActive,'closed':newKeywordActive==false}" (click)="newKeywordActive=true"
+  *ngIf="!newClassificationOpen">
+  <i class="fa fa-plus fa-2x" *ngIf="!newKeywordActive" aria-hidden="true"></i>
+  <div class="new-keyword-panel" [ngClass]="{'active':newKeywordActive}">
+    <div class="panel-close" (click)="closeNewKeywordpanel($event)">
+      <i class="fa fa-times " aria-hidden="true"></i>
+    </div>
+    <div class="new-keyword-panel-item">
+      <label>Document Type</label><br/>
+      <select [(ngModel)]="newClassificationKeywordProperty.docTypeName" class="form-control">
+                                                                <option *ngFor="let c of selectedDocType.docTypeName" [ngValue]="c">{{c.docTypeName}}</option>
+                                                                </select>
+    </div>
+    <div class="new-keyword-panel-item first">
+      <label>Keywords</label><br/>
+      <input type="text" class="form-control" [(ngModel)]="newClassificationKeywordProperty.keyword" placeholder="Keywords">
+    </div>
+    <div class="new-keyword-panel-item">
+      <label>Page Position</label>
+      <select class="form-control" [(ngModel)]="newClassificationKeywordProperty.pagePosition">
+                                                                                <option value="First">First</option>
+                                                                                <option value="Last">Last</option>
+                                                                                <option value="Addtional">Addtional</option>
+                                                                            </select>
+    </div>
+    <div class="new-keyword-panel-item">
+      <label>% Of Similarity</label>
+      <input type="text" placeholder="% Of Similarity" [(ngModel)]="newClassificationKeywordProperty.percentageofsimilarity" class="form-control">
+    </div>
+    <div class="new-keyword-panel-item">
+      <label>Threshold %</label>
+      <input type="text" placeholder="Threshold %" [(ngModel)]="newClassificationKeywordProperty.keywordThresholdpercetage" class="form-control">
+    </div>
+    <div class="new-keyword-panel-item">
+      <label>Zone Area</label>
+      <select class="form-control" [(ngModel)]="newClassificationKeywordProperty.zoneArea">
+                                                                                <option value="Fullpage">Full page</option>
+                                                                                <option value="FirstHalfofpage">1st of ½ page</option>
+                                                                                <option value="SecondHalfofpage">2nd  of ½ page</option>
+                                                                                <option value="LeftSideofpage">Left ½ page</option>
+                                                                                <option value="RightSideofpage">Right ½ page</option>
+                                                                                <option value="OneThirdofpage">Top 1/3 page</option>
+                                                                                <option value="SecondThirdofpage">Middle 1/3 page</option>
+                                                                                <option value="LastThirdofpage">Bottom 1/3 page</option>
+                                                                                <option value="OneFourthofpage">1st of ¼ page</option>
+                                                                                <option value="SecondFourthofpage">2nd of ¼ page</option>
+                                                                                <option value="ThreeFouthofpage">3rd of ¼ page</option>
+                                                                                <option value="LastFouthofpage">4th of ¼ page</option>
+                                                                            </select>
+    </div>
+    <div class="new-keyword-panel-item">
+      <label>Case Sensitive</label>
+      <select [(ngModel)]="newClassificationKeywordProperty.casesensitive" class="form-control">
+                                                                            <option value="1">True</option>
+                                                                            <option value="0">False</option>
+                                                                            </select>
+      <!--<input type="text" placeholder="Case Sensitive" [(ngModel)]="newClassificationKeywordProperty.Casesensitive" class="form-control">-->
+    </div>
+    <div class="new-keyword-panel-item last">
+      <input type="button" value="Add" (click)="addNewKeyword(selectedDocType)" class="btn button-color">
+    </div>
+  </div>
+</div>
+<!---->
+</div>
+</div>
+<!---->
+<div class="span4 col-md-3 col-md-offset-6">
+  <input type="button" class="btn  button-color" (click)="submit()" value="Save">
+  <!--<i class="fa fa-floppy-o fa-3x" aria-hidden="true" (click)="submit()"></i>-->
+</div>
+<!---->
+</div>
+</div>
+
+
+
+</div>

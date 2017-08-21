@@ -1,0 +1,8 @@
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar" 
+  [attr.aria-valuenow] ="valuenow"  [attr.aria-valuemin] ="valuemin" 
+  [attr.aria-valuemax] ="valuemax" [ngStyle]="{ 'width': completedPercentage}">
+    <!--<span class="sr-only">45% Complete</span>-->
+    {{valuenow}}/{{valuemax}}
+  </div>
+</div>

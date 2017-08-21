@@ -1,0 +1,50 @@
+.output-wrap{
+    background-color: #F7F7F7;
+    display: flex;
+}
+
+.doc-section{
+    background-color: white;
+    margin: 10px;
+    border: 1px solid #E6E9ED;
+    padding: 10px;
+    width: 49%;
+    height: 90vh;
+    overflow-y: auto;
+}
+
+.header{
+    font-size: 20px;
+    border-bottom: 1px solid #ccc;
+}
+.group{
+    margin-top: 20px;
+}
+.group-header{
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px 0 10px;
+    background-color: #F2F5F7;
+    font-size: 15px;
+}
+.group-items-table{
+    width: 100%;
+}
+.sl-no{
+    width: 40px;
+}
+.name{
+    width: 40%;
+}
+.created{
+    width: 40%;
+}
+.zip-download{
+    cursor: pointer;
+    float: right;
+}
+.title{
+    margin-left: 10px;
+    color: #73879c;
+    text-transform: uppercase;
+}

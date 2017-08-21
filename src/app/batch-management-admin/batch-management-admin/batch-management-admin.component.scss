@@ -1,0 +1,29 @@
+.content-wrap {
+    display: flex;
+}
+
+.left {
+    margin-left: 5px;
+    min-width: 250px;
+}
+
+.left.close {
+    display: none;
+}
+
+.right {
+    margin: 0 5px 0 5px;
+    width: auto;
+    background-color: white;
+    flex-grow: 1;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+.action-bar {
+    margin: 10px;
+}
+
+.grid {
+    margin: 10px;
+}

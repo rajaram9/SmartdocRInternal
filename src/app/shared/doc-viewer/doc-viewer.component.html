@@ -1,0 +1,4 @@
+<div class="viewer-wrap" [style.width]="viewerWidth">
+  <si-image-viewer #imageViewer [widthInRF]=widthInRF [heightInRF]=heightInRF (ocrResult)="onOCRSuccess($event)" [markField]=dataPointObj
+    [imagePath]='imagePath' [Frompage]=Frompage (ocrdataCordinates)="onOcrDataCordinates($event)"></si-image-viewer>
+</div>

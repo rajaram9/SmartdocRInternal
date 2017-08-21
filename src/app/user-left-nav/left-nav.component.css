@@ -1,0 +1,11 @@
+.nav-bar{
+    max-width: 250px;
+    background-color: white;
+}
+.nav-bar-header{
+    padding: 16px 16px 12px 16px;
+    font-size: 18px;
+    line-height: 19px;
+    font-weight: 500;
+    border-bottom:  1px solid #f0f0f0;
+}

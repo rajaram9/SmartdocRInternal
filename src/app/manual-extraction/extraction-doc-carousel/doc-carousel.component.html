@@ -1,0 +1,25 @@
+<div class="carousel-wrap">
+  <div class="carousel-prev">
+    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+  </div>
+  <div class="carousel-items">
+    <div class="carousel-group">
+      <div *ngIf="Frompage != 'ExtractionConfig'">
+        <div class="carousel-item" (click)=onItemSelect(page) *ngFor="let page of docType.pages">
+          <div class="status" [ngClass]="{'green':docType.isClassified,'red':!docType.isClassified}"> </div>
+          <img src="{{imagePath+page.path}}" />
+          <div class="img-caption">{{page.name}}</div>
+        </div>
+      </div>
+      <div class="carousel-item" (click)=onItemSelect(page) *ngFor="let page of docType">
+        <div *ngIf="Frompage === 'ExtractionConfig'" [ngClass]="SelectedPageonclick === page ?'onclickpage':'unclickpage'">
+          <img src="{{imagePath+page.path}}" />
+          <!--<div class="img-caption">{{page.name}}</div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-next">
+    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+  </div>
+</div>

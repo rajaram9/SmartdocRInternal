@@ -1,0 +1,34 @@
+.action-wrap{
+    display: flex;
+    justify-content: space-between;
+}
+.right{
+    display: flex;
+}
+.action-btns{
+    margin-right: 20px;
+    color: #757575;
+}
+.action-btn{
+    margin-left: 10px;
+    cursor: pointer;
+}
+.action-btn:hover{
+    color: black;
+}
+.calendar{
+    max-width: 350px;
+}
+.batch-search-input{
+    border-right: 0;
+    border-top-left-radius: 15px;
+border-bottom-left-radius: 15px;
+}
+.batch-search-btn{
+background-color: white;
+border-top-right-radius: 15px;
+border-bottom-right-radius: 15px;
+}
+.search{
+    max-width: 300px;
+}

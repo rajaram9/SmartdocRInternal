@@ -1,0 +1,86 @@
+.grid {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.grid-row {
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+}
+
+.grid-row:hover {
+    background-color: #ddd;
+}
+
+.grid-row-action-btns {
+    position: absolute;
+    right: 10px;
+    background-color: #ddd;
+    display: flex;
+    opacity: 0;
+}
+
+.grid-row:hover .grid-row-action-btns {
+    opacity: 1;
+}
+
+.grid-row-action-btn {
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.grid-cell {
+    padding-left: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.grid-header-item {
+    position: relative;
+    display: flex;
+    background-color: #eaeaea;
+    line-height: 40px;
+    justify-content: space-between;
+}
+
+.grid-data-item {
+    margin: 5px 0;
+}
+
+.grid-tools {
+    position: absolute;
+    display: none;
+    right: 10px;
+    top: 39px;
+}
+
+.column-menu-icon {
+    visibility: hidden;
+    margin-right: 10px;
+    width: 30px;
+    text-align: center;
+    z-index: 5;
+}
+
+.column-menu-icon.open {
+    background-color: white;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.tools-enabled .column-menu-icon {
+    visibility: visible;
+}
+
+.progressbar {
+    display: block;
+    margin-top: 14px;
+}

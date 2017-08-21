@@ -1,0 +1,61 @@
+<div class="wrap">
+  <div class="batch-move-close">
+    <i (click)="close.emit()" class="fa fa-times" aria-hidden="true"></i>
+  </div>
+
+  <div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" #otherTab class="active" (click)="putFocus('other')"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Existing doctype</a></li>
+      <li role="presentation" (click)="putFocus('new')"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">New doctype</a></li>
+      <li role="presentation" (click)="putFocus('newBatch')"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Other batch</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+      <div role="tabpanel" class="tab-pane active action-item" id="home">
+        <div class="form">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Document Type</label>
+            <select #moveOtherDoc class="form-control " [(ngModel)]="selectedDocTypeIndex">
+                <option value="{{docTypeIndex}}" *ngFor="let docType of docTypes;let docTypeIndex=index">{{docType.nameWithIndex}}</option>
+        </select>
+          </div>
+          <input type="button" (click)='moveToOther.emit(selectedDocTypeIndex)' value="Submit" class="btn btn-success">
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane action-item" id="profile">
+        <div class="form">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Document Type</label>
+            <select #moveNewDoc [(ngModel)]="clientDocType" class="form-control">
+          <option value="{{clientDocType}}"  *ngFor="let clientDocType of clientDocTypes">{{clientDocType}}</option>
+        </select>
+          </div>
+          <input type="button" (click)="moveToNew.emit(clientDocType)" value="Submit" class="btn btn-success">
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane action-item" id="messages">
+        <div class="form">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Batch</label>
+            <select #moveNewBatch [(ngModel)]="selectedBatch" (change)="onBatchChange($event.target.value)" class="form-control">
+          <option value="{{batch.batchname}}"  *ngFor="let batch of batches">{{batch.batchname}}</option>
+        </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Document Type</label>
+            <select [(ngModel)]="selectedBatchDoc" class="form-control">
+          <option value="{{batchDoc.nameWithIndex}}"  *ngFor="let batchDoc of batchDocs">{{batchDoc.nameWithIndex}}</option>
+        </select>
+          </div>
+          <input type="button" (click)="onMoveToOtherBatch(selectedBatch,selectedBatchDoc)" value="Submit" class="btn btn-success">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

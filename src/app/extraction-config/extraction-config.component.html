@@ -1,0 +1,87 @@
+<!--<si-header [isMenuEnabled]=false formControlName="header"></si-header>-->
+<!--<div [formGroup]="form">-->
+<!--<form [formGroup]="loginForm">-->
+<div style="display:inline-block;">
+<div style="width: 40%;float:left;">
+<div class="margindiv">
+  <si-doc-viewer [viewerWidth]='"100%"' [doc]=currentActiveDoc [markField]=fieldData [Frompage]='"Extraction"' [FromExtConfig]='"ExtConfig"'
+    (ocrbandResult)="onOCRSuccess($event)" (ocrbandResult1)="onOcrDataCordinates($event)"></si-doc-viewer>
+</div>
+</div>
+<div style="width: 60%;float:left;">
+<div class="margindiv">
+  <div class="sameline">
+    <div class="selected-item"><span>Document name selected : </span>
+      <span>{{docName}}</span>
+    </div>
+    <div class="selected-item"><span>Document type selected : </span>
+      <span>{{docTypeName}}</span>
+    </div>
+  </div>
+  <!---->
+  <div>
+    <!--<p-dataTable [value]="" [editable]="true" [immutable]=false tableStyleClass="tablePrimeNgClass" [responsive]="true" [stacked]="stacked"
+      #dt>
+      <p-column *ngFor="let col of classifycols" [header]="col.header" [sortable]="true" [style]="{'overflow': 'visible','width':col.fwidth}"
+        [hidden]="col.hidden">
+        <ng-template let-car="rowData" pTemplate="body" let-ri="rowIndex">
+          <input type="text" pInputText [(ngModel)]="car[col.field]" [class]="'form-control'" required="true" placeholder="" (click)="onEditInit($event,col.field,ri)">
+        </ng-template>
+      </p-column>
+    </p-dataTable>-->
+  </div>
+  <!---->
+  <div>
+    <p-dataTable [value]="cars" [editable]="true" [immutable]=false tableStyleClass="tablePrimeNgClass" #dt>
+      <!--<p-header>Extraction Fields Setup</p-header>-->
+      <p-column *ngFor="let col of cols" [header]="col.header" [sortable]="true" [style]="{'overflow': 'visible','width':col.fwidth}"
+        [hidden]="col.hidden">
+        <ng-template let-car="rowData" pTemplate="body" let-ri="rowIndex" *ngIf="col.header!='Extraction Type' && col.header!='Validations' && col.header!='Locators' ">
+          <input type="text" pInputText [(ngModel)]="car[col.field]" [class]="'form-control'" required="true" placeholder="" (click)="onEditInit($event,col.field,ri)">
+          <div *ngIf="col.subfield=='Anchor1' && car['Locators'].indexOf('1') > -1" style="margin-top: 5px;">
+<input type="text" pInputText [(ngModel)]="car[col.subfield]" [class]="'form-control'" required="true" placeholder="" (click)="onEditInit($event,col.subfield,ri)">
+</div>
+</ng-template>
+<ng-template let-car="rowData" pTemplate="body" let-ri="rowIndex" *ngIf="col.header=='Locators'">{{rowIndex}}
+  <p-multiSelect [options]="Locators" (onChange)="onMultiChange($event,ri)" [maxSelectedLabels]="1" [autoWidth]="false" [style]="{ 'width': '100%'} "></p-multiSelect>
+</ng-template>
+<ng-template let-car="rowData" pTemplate="body" let-ri="rowIndex" *ngIf="col.header=='Extraction Type'">
+  <p-dropdown [options]="extractionTypes" [(ngModel)]="car[col.field]" [autoWidth]="false " [style]="{ 'width': '100%'} ">
+  </p-dropdown>
+</ng-template>
+<ng-template let-car="rowData" pTemplate="body" let-ri="rowIndex" *ngIf="col.header=='Validations'">
+  <i (click)="showDialog($event,ri)" class="fa fa-external-link" aria-hidden="true"></i>
+</ng-template>
+</p-column>
+<p-footer>
+  <div class="ui-helper-clearfix" style="width:100%">
+<div>
+  <button type="button" pButton icon="fa-plus" class="btn  button-color" style="float:left" label="Add" (click)="showDialogToAdd()">Add</button>
+</div>
+<div style="margin-left: 60px;"><button type="button" class="btn  button-color" pButton icon="fa-plus" style="float:left" label="Save" (click)="showDialogToSave()">Save/Update </button>
+</div>
+</div>
+</p-footer>
+</p-dataTable>
+</div>
+</div>
+</div>
+<div class="doc-carousel " [ngClass]="{ 'collapsed':collapsed}" ngControlDefault>
+  <ul class="carousal-tools " ngControlDefault>
+    <li (click)="collapsed=!collapsed " class="carousal-tool" ngControlDefault>
+      <i class="fa fa-chevron-down " [ngClass]="{ 'fa-rotate-180':collapsed} " aria-hidden="true" ngControlDefault></i>
+    </li>
+  </ul>
+  <!--<si-extraction-doc-carousel (itemSelected)=onDocSelected($event) [docType]="currentDocType "> </si-extraction-doc-carousel>-->
+  <si-extraction-doc-carousel [Frompage]='"ExtractionConfig"' [docType]="currentDocType" (itemSelected)=onDocSelected($event)>
+  </si-extraction-doc-carousel>
+</div>
+<p-dialog header="Validations" [(visible)]="display" modal="modal" width="320" [responsive]="true">
+  <p-listbox [options]="Brules" [(ngModel)]="selectedBrules" multiple="multiple" checkbox="checkbox" filter="filter"></p-listbox>
+  <p-footer>
+    <button type="button" pButton icon="fa-check" class="button-color" (click)="display=false;onSubmit()" label="Yes">Submit</button>
+  </p-footer>
+</p-dialog>
+</div>
+<!--</form>-->
+<!--</div>-->
