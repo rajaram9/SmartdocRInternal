@@ -17,3 +17,7 @@ body {
 .sk-cube-grid .sk-cube {
     background-color: #000;
 }
+.left-head h1 a{
+    color: #fff;
+    text-decoration: none;
+}
