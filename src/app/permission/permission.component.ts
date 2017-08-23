@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+// import {AccordionModule} from "ngx-accordion";
 @Component({
   selector: 'app-permission',
   templateUrl: './permission.component.html',

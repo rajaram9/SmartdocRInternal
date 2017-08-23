@@ -5,6 +5,7 @@ import { routing } from './app.route';
 import { Ng2DragDropModule } from 'ng2-drag-drop';
 
 import { HotkeyModule } from 'angular2-hotkeys';
+import {AccordionModule} from "ngx-accordion";
 
 // core module
 import { CoreModule } from './core/core.module';
@@ -49,7 +50,7 @@ import { HeaderNewComponent } from './header-new/header-new.component';
   imports: [
     BrowserModule, BrowserAnimationsModule, ReactiveFormsModule, FormsModule,
     routing, CoreModule, SharedModule, ClientDocumentsMappingModule,
-    HotkeyModule.forRoot(), LoadingAnimateModule.forRoot(), Ng2DragDropModule.forRoot()
+    HotkeyModule.forRoot(), LoadingAnimateModule.forRoot(), Ng2DragDropModule.forRoot(),AccordionModule
   ],
 
   declarations: [AppComponent,

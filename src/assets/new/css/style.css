@@ -39,13 +39,14 @@ header .right-head ul li:last-child{border-right: none;}
 .nav-left ul li ul li {
     background: #ccc;
 }
-
+input[type="radio"], input[type="checkbox"]{margin: 4px 6px 0;}
 .nav-left ul li a:hover,.nav-left ul li a.active{background: #51c8ea;}
 .contentRight{background: #fff;}
 .defaultNav{padding: 20px 0;}
-.defaultNav ul li{list-style: circle;display: inline-block;}
+.defaultNav ul li{list-style: circle;display: inline-block; margin-left: 15px;}
 .defaultNav ul li i{color: #dedede;margin: 0 10px 0 20px;}
 .defaultNav ul li a{padding: 5px; color: #303030;}
+.defaultNav ul li a:hover,.defaultNav ul li a:active{background: #10a9b7}
 .customTop{margin-top: 20px;margin-bottom: 20px;}
 .customProcess h4{margin: 10px 0;}
 .customProcess .custom-nav ul li a {display: block;padding: 10px 0;margin: 1px 0;color:#303030; }
@@ -119,3 +120,8 @@ table th { background-color: #51c8ea;}
 .check-form{display: inline-block;border: 1px solid #dedede;padding: 5px 5px;width: 110px;text-align: left;margin-left: 10px;}
 .actLabel{margin-left: 5px;color: #dedede;}
 .customProcess{margin: 40px 0 70px 0;}
+
+/*Accordians*/
+.panel-body {
+     padding: 0px; 
+}
