@@ -24,24 +24,16 @@
                     <h4>Customized proccess flow</h4>
                   <div class="custom-nav">
                     <ul>
-                      <li><a class="btn-blue btn-gray"  href="#">Auto classfication</a></li>
-                      <li><a class="btn-blue btn-gray"  href="#">Manual classfication</a></li>
-                      <li><a class="btn-blue btn-gray"  href="#">Auto extraction</a></li>
-                      <li><a class="btn-blue btn-gray"  href="#">Manual extraction</a></li>
-                      <li><a class="btn-blue btn-gray"  href="#">Auditor classfication</a></li>
-                      <li><a class="btn-blue btn-gray"  href="#">Manual upload</a></li>
-                      <li><a class="btn-blue btn-gray"  href="#">Connect to DB</a></li>
-                      <li><a class="btn-blue btn-gray"  href="#">Connect to DMS</a></li>
-                      <li><a class="btn-blue btn-gray"  href="#">Connect to</a></li>
+                      <li [draggable] *ngFor = "let process of processFlowDefault" [dragClass]="'active'" [dragData]="process" [dragEnabled]="true"><a class="btn-blue btn-gray"  href="">{{process.name}}</a></li>               
                     </ul>
                   </div>
                 </div>
                 <div class="col-md-9 customTop">
-                  <div class="customRight">
+                  <div class="customRight" droppable [dragOverClass]="'drag-target-border'" [dragHintClass]="'drag-hint'"
+            (onDrop)="onFruitDrop($event)" [dropEnabled]="true">
                     <div class="butttonFields">
                       <ul>
-                        <li><a class="btn-block button btn-blue"  href="#">Auto classfication</a></li>
-                        <li><a class="btn-block button btn-blue"  href="#">Manual classfication</a></li>
+                        <li *ngFor="let processNew of processFlowSet"><a class="btn-block button btn-blue"  href="#">{{processNew.name}}</a></li>                        
                         <div class="clearfix"></div>
                       </ul>
                     </div>

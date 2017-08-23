@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { routing } from './app.route';
+import { Ng2DragDropModule } from 'ng2-drag-drop';
 
 import { HotkeyModule } from 'angular2-hotkeys';
 
@@ -48,7 +49,7 @@ import { HeaderNewComponent } from './header-new/header-new.component';
   imports: [
     BrowserModule, BrowserAnimationsModule, ReactiveFormsModule, FormsModule,
     routing, CoreModule, SharedModule, ClientDocumentsMappingModule,
-    HotkeyModule.forRoot(), LoadingAnimateModule.forRoot()
+    HotkeyModule.forRoot(), LoadingAnimateModule.forRoot(), Ng2DragDropModule.forRoot()
   ],
 
   declarations: [AppComponent,
