@@ -38,6 +38,7 @@ import { ModuleIndexComponent } from './module-index/module-index.component';
 import { OperatorComponent } from './operator/operator.component';
 import { PermissionComponent } from './permission/permission.component';
 import { ClientComponent } from './client/client.component';
+// import { AddClientComponent } from './add-client/add-client.component';
 import { ProcessComponent } from './process/process.component';
 import { NavLeftComponent } from './nav-left/nav-left.component';
 import { NavLeftProcessComponent } from './nav-left-process/nav-left-process.component';
