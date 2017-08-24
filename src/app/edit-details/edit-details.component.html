@@ -2,7 +2,7 @@
 <section class="middle-content container-fluid" style="background-image: url('assets/new/images/background.jpg');">
     <div class="row customTop">
         <div class="col-md-2">
-           <app-nav-left></app-nav-left>
+            <app-nav-left></app-nav-left>
         </div>
         <div class="col-md-9 col-md-offset-1">
             <div class="contentRight mid-right">
@@ -117,7 +117,8 @@
                         <div class="formGroup">
                             <label>Office Location</label>
                             <select class="form-control"> 
-                       <option value="all"></option>
+                       <option selected>states</option>
+                       <option *ngFor = "let state of states">{{state.name}}</option>
                    </select>
                             <div class="clearfix"></div>
                         </div>
