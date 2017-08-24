@@ -2,7 +2,7 @@
 <section class="middle-content container-fluid" style="background-image: url('assets/new/images/background.jpg');">
     <div class="row customTop">
         <div class="col-md-2">
-           <app-nav-left></app-nav-left>
+            <app-nav-left></app-nav-left>
         </div>
         <div class="col-md-9 col-md-offset-1">
             <div class="contentRight mid-right">
@@ -33,37 +33,39 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="tableDetails">
-                    <table class="table table-bordered DetailsTable">
+                    <table class="table table-bordered DetailsTable" style="width: 100%">
                         <thead>
                             <tr>
-                                <th>No.</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Emp ID</th>
-                                <th>Role</th>
+                                <th style="width: 5%">No.</th>
+                                <th style="width: 25%">First Name</th>
+                                <th style="width: 30%">Last Name</th>
+                                <th style="width: 20%">Emp ID</th>
+                                <th style="width: 20%">Role</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td style="width: 5%">1</td>
+                                <td style="width: 25%">Williams</td>
+                                <td style="width: 30%">james</td>
+                                <td style="width: 20%">123456</td>
+                                <td style="width: 20%">employe</td>
                             </tr>
-                            <tr>
+                            <!--<tr>
+                                <td style="width: 100%"></td>
+                                <td style="width: 100%"></td>
+                                <td style="width: 100%"></td>
+                            </tr>-->
+                            <!--<tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            </tr>-->
                         </tbody>
                     </table>
                 </div>
                 <h4 class="heading edit">Edit User Details</h4>
-                <div class="editDetails">
+                <!--<div class="editDetails">
                     <div class="row companyDetails">
                         <div class="col-md-4 formGroup">
                             <label>Search By Role</label>
@@ -83,7 +85,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <div class="row companyDetails">
                     <div class="col-md-4">
                         <div class="formGroup">
@@ -117,7 +119,8 @@
                         <div class="formGroup">
                             <label>Office Location</label>
                             <select class="form-control"> 
-                       <option value="all"></option>
+                       <option selected>states</option>
+                       <option *ngFor = "let state of states">{{state.name}}</option>
                    </select>
                             <div class="clearfix"></div>
                         </div>
@@ -126,8 +129,9 @@
                             <input class="form-control" type="text">
                             <div class="clearfix"></div>
                         </div>
-                        <div class="formGroup">
-                            <a class=" button-group button btn-blue pull-right" href="javascript:void()">Save</a>
+                        <div class="formGroup button-group pull-right">
+                            <a class="button btn-gry buttonEdit" href="javascript:void()">permissions</a>
+                            <a class="button btn-blue buttonEdit" href="javascript:void()">Save</a>
                             <div class="clearfix"></div>
                         </div>
                     </div>

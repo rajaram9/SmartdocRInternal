@@ -12,6 +12,7 @@ import { OperatorComponent } from './operator/operator.component';
 import { PermissionComponent } from './permission/permission.component';
 import { ClientComponent } from './client/client.component';
 import { ProcessComponent } from './process/process.component';
+// import { AddClientComponent } from './add-client/add-client.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,7 +35,8 @@ export const appRoutes: Routes = [
     loadChildren: './classification-configuration/classification-configuration.module#ClassificationConfigurationModule'
   },
   { path: 'classification', loadChildren: './classification/classification.module#ClassificationModule' },
-  { path: 'extractionConfig', loadChildren: './extraction-config/extraction-config.module#ExtractionConfigModule' }
+  { path: 'extractionConfig', loadChildren: './extraction-config/extraction-config.module#ExtractionConfigModule' },
+  // { path: 'addClient', component: AddClientComponent }
 
 ];
 
