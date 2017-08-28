@@ -4,8 +4,8 @@
         <div class="col-md-2">
           <div class="nav-left">
             <ul>
-              <li><a href="#">Work flow management</a></li>
-              <li><a class="active"  href="#">Add New work flow</a></li>
+              <li><a href="javascript:void()">Work flow management</a></li>
+              <li><a class="active" href="javascript:void()">Add New work flow</a></li>
             </ul>
           </div>
         </div>
@@ -13,10 +13,10 @@
           <div class="contentRight">
             <div class="defaultNav">
               <ul>
-                <li><i class="fa fa-circle" aria-hidden="true"></i><a class="btn-tabs btn-blue" href="#">Default 1</a></li>
-                <li><i class="fa fa-circle" aria-hidden="true"></i><a class="btn-tabs btn-blue" href="#">Default 2</a></li>
-                <li><i class="fa fa-circle" aria-hidden="true"></i><a class="btn-tabs btn-blue" href="#">Default 3</a></li>
-                <li><i class="fa fa-circle" aria-hidden="true"></i><a class="btn-tabs btn-blue" href="#">Default 4</a></li>
+                <li><input type="radio" name="Default"><a class="btn-tabs btn-blue btn-gray" href="javascript:void()">Default 1</a></li>
+                <li><input type="radio" name="Default"><a class="btn-tabs btn-blue btn-gray" href="javascript:void()">Default 2</a></li>
+                <li><input type="radio" name="Default"><a class="btn-tabs btn-blue btn-gray" href="javascript:void()">Default 3</a></li>
+                <li><input type="radio" name="Default"><a class="btn-tabs btn-blue btn-gray" href="javascript:void()">Default 4</a></li>
               </ul>
             </div>
             <div class="customProcess">
@@ -24,7 +24,7 @@
                     <h4>Customized proccess flow</h4>
                   <div class="custom-nav">
                     <ul>
-                      <li [draggable] *ngFor = "let process of processFlowDefault" [dragClass]="'active'" [dragData]="process" [dragEnabled]="true"><a class="btn-blue btn-gray"  href="">{{process.name}}</a></li>               
+                      <li [draggable] *ngFor = "let process of processFlowDefault" [dragClass]="'active'" [dragData]="process" [dragEnabled]="true"><a class="btn-blue btn-gray"  href="javascript:void()">{{process.name}}</a></li>               
                     </ul>
                   </div>
                 </div>
@@ -33,7 +33,7 @@
             (onDrop)="onFruitDrop($event)" [dropEnabled]="true">
                     <div class="butttonFields">
                       <ul>
-                        <li *ngFor="let processNew of processFlowSet"><a class="btn-block button btn-blue"  href="#">{{processNew.name}}</a></li>                        
+                        <li *ngFor="let processNew of processFlowSet"><a class="btn-block button btn-blue"  href="javascript:void()">{{processNew.name}}</a></li>                        
                         <div class="clearfix"></div>
                       </ul>
                     </div>
@@ -42,8 +42,8 @@
                   <div class="content">
                   <div class="subButton">
                   <div class="button-group pull-right">
-                    <a class="button btn-gry buttonEdit" href="#">Edit</a>
-                    <a class="button btn-blue buttonEdit" href="#">Save</a>
+                    <a class="button btn-gry buttonEdit" href="javascript:void()">Edit</a>
+                    <a class="button btn-blue buttonEdit" href="javascript:void()">Save</a>
                   <div class="clearfix"></div>
                   </div>
                   <div class="clearfix"></div>
