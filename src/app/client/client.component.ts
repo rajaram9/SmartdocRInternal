@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'app-client',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {}
+  rowData = [];
+  contactDetails = {};
+  addRow(data) {
+    this.rowData.push({
+      
+    })
   }
+  removeRow(i) {
+     this.rowData.splice(i, 1);
+    
+  }
+  ngOnInit() {}
 
 }
