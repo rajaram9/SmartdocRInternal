@@ -227,15 +227,13 @@ input[type="checkbox"] {
 }
 
 .butttonFields {
-    width: 70%;
+    width: 40%;
     margin: auto;
     margin-top: 20px;
 }
 
 .butttonFields ul li {
-    float: left;
-    width: 47%;
-    margin-right: 10px;
+    width: 100%;
 }
 
 .dragPoint {
