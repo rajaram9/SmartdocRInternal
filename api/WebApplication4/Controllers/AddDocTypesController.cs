@@ -665,7 +665,22 @@ namespace WebApplication4.Controllers
 
           return Request.CreateResponse(HttpStatusCode.OK, ExtractionConfigs);
         }
+        [Route("api/savenewclient")]
+        public HttpResponseMessage savenewclient(newclient data)
+        {
+            //var context = new SMARTINDEXEntities();
+            //List<Cst_DocName> newCst_DocName = new List<Cst_DocName>();
+            //var NewDocName = new Cst_DocName
+            //{
+            //    DocName = data.DocName,
+            //    Createdby = data.Createdby
 
+            //};
+            //newCst_DocName.Add(NewDocName);
+            //context.Cst_DocName.AddRange(newCst_DocName);
+            //context.SaveChanges();
+            return Request.CreateResponse(HttpStatusCode.OK, "Saved successfully");
+        }
   }
     public class Configdate
     {
@@ -710,6 +725,21 @@ namespace WebApplication4.Controllers
         public string DocName { get; set; }
 
         public int Createdby { get; set; }
+    }
+
+    public class newclient 
+    {
+        public string name { get; set; }
+        public string state { get; set; }
+        public string adress { get; set; }
+        public string city { get; set; }
+        public string zip { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public string phonenumber { get; set; }
+        public string emailiD { get; set; }
+        public string contractdate { get; set; }
+        public string productsselected { get; set; }
     }
 
     public class PrimeCar

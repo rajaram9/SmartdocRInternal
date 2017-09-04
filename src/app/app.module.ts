@@ -5,7 +5,7 @@ import { routing } from './app.route';
 import { Ng2DragDropModule } from 'ng2-drag-drop';
 
 import { HotkeyModule } from 'angular2-hotkeys';
-import {AccordionModule} from "ngx-accordion";
+import { AccordionModule } from "ngx-accordion";
 
 // core module
 import { CoreModule } from './core/core.module';
@@ -38,6 +38,7 @@ import { ModuleIndexComponent } from './module-index/module-index.component';
 import { OperatorComponent } from './operator/operator.component';
 import { PermissionComponent } from './permission/permission.component';
 import { ClientComponent } from './client/client.component';
+import { ClientService } from './client/client.service';
 // import { AddClientComponent } from './add-client/add-client.component';
 import { ProcessComponent } from './process/process.component';
 import { NavLeftComponent } from './nav-left/nav-left.component';
@@ -51,7 +52,7 @@ import { HeaderNewComponent } from './header-new/header-new.component';
   imports: [
     BrowserModule, BrowserAnimationsModule, ReactiveFormsModule, FormsModule,
     routing, CoreModule, SharedModule, ClientDocumentsMappingModule,
-    HotkeyModule.forRoot(), LoadingAnimateModule.forRoot(), Ng2DragDropModule.forRoot(),AccordionModule
+    HotkeyModule.forRoot(), LoadingAnimateModule.forRoot(), Ng2DragDropModule.forRoot(), AccordionModule
   ],
 
   declarations: [AppComponent,
@@ -59,7 +60,7 @@ import { HeaderNewComponent } from './header-new/header-new.component';
     BatchManagmentComponent, UserLeftNavComponent, UserActionBarComponent, FirstPageComponent, WorkFlowComponent, EditDetailsComponent, CompanyIndexComponent, ModuleIndexComponent, OperatorComponent, PermissionComponent, ClientComponent, ProcessComponent, NavLeftComponent, NavLeftProcessComponent, HeaderNewComponent
   ],
   bootstrap: [AppComponent],
-  providers: [AppConfigService, LoadingAnimateService]
+  providers: [AppConfigService, LoadingAnimateService, ClientService]
 })
 export class AppModule { }
 
