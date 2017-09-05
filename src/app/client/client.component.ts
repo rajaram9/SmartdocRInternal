@@ -1,12 +1,12 @@
-<<<<<<< HEAD
+
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from './client.service';
-=======
+
 import {
   Component,
   OnInit
 } from '@angular/core';
->>>>>>> 46166a605883bc4c8c5abd4abadd99bd23b5f4a9
+
 
 @Component({
   selector: 'app-client',

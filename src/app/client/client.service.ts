@@ -11,7 +11,7 @@ export class ClientService {
         const body = JSON.stringify(data);
         const headers = new Headers({ 'Content-Type': 'application/json' });
         const options = new RequestOptions({ headers: headers });
-        return this.http.post(`${this.appConfigService.getConfig('apiUrl')}api/SaveNewDocumentName`, body, options)
+        return this.http.post(`${this.appConfigService.getConfig('apiUrl')}api/savenewclient`, body, options)
             .map(this.extractdata)
             .catch(this.errorhandler);
 
